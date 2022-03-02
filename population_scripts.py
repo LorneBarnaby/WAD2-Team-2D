@@ -23,7 +23,6 @@ def add_user(user):
     profile = UserProfile(user=u)
     profile.currency = user["currency"]
     profile.save()
-    print(profile)
 
 
 populate()

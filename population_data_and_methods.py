@@ -31,7 +31,3 @@ def generate_prize_lists():
         ["The Sky", 80000, "Rare"],
     ]
     return [create_pop_dict(key_list_prizes, prize_val) for prize_val in prize_vals]
-
-
-print(generate_user_lists())
-print(generate_prize_lists())
