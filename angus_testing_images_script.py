@@ -20,7 +20,8 @@ achievement_list = generate_achievement_lists()
 
 
 def user(user_list):
-    for i in range(1, (len(user_list) + 1)):
+    for i in range(1, len(user_list) + 1):
+        print(i)
         profile = UserProfile.objects.get(id=i)
         filename = user_list[i - 1]["username"] + ".jpg"
         try:
@@ -33,7 +34,8 @@ def user(user_list):
 
 
 def prize(prize_list):
-    for i in range(1, len(prize_list)):
+    for i in range(1, len(prize_list) + 1):
+        print(i)
         prize = Prize.objects.get(id=i)
         filename_in = str(i) + ".jpg"
         filename_out = prize_list[i - 1]["name"] + ".jpg"
@@ -41,5 +43,16 @@ def prize(prize_list):
         prize.prizeImage.save(f"{filename_out}", File(open(dir, "rb")))
 
 
+def achievement(achievement_list):
+    for i in range(1, len(achievement_list) + 1):
+        print(i)
+        achieve = Achievement.objects.get(id=i)
+        filename_in = str(i) + ".jpg"
+        filename_out = achievement_list[i - 1]["name"] + ".jpg"
+        dir = os.path.join(os.getcwd(), "tmp/achieve/" + filename_in)
+        achieve.achievementImage.save(f"{filename_out}", File(open(dir, "rb")))
+
+
 user(user_list)
 prize(prize_list)
+achievement(achievement_list)

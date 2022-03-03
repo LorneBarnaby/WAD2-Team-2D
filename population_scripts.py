@@ -28,6 +28,15 @@ def populate():
     for achieve in achievement_list:
         add_achievement(achieve)
 
+    image_check = input(
+        """Please enter 'n' if you would like to skip adding images
+    might be helpful if you've already done it as adding images
+    once you've already added them makes loads of duplicate images"""
+    )
+
+    if image_check != "n" or image_check != "N":
+        pass
+
 
 def add_user(user):
     username = user["username"]
