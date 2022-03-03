@@ -11,18 +11,16 @@ import django
 django.setup()
 from CR8.models import UserProfile, Prize, Achievement
 from django.contrib.auth.models import User
+from django.core.files import File
 
 
 def populate():
-    userIn = input(
-        "If this is the first time this is run, enter 'y', otherwise enter anything else: "
-    )
     prize_list = generate_prize_lists()
     user_list = generate_user_lists()
     achievement_list = generate_achievement_lists()
-    if userIn == "y" or userIn == "Y":
-        for user in user_list:
-            add_user(user)
+
+    for user in user_list:
+        add_user(user)
 
     for prize in prize_list:
         add_prize(prize)
@@ -32,26 +30,36 @@ def populate():
 
 
 def add_user(user):
-    u = User(username=user["username"])
+    username = user["username"]
+    u = User.objects.get_or_create(username=username)[0]
     u.set_password(user["password"])
     u.save()
-    profile = UserProfile(user=u)
+    profile = UserProfile.objects.get_or_create(user=u)[0]
     profile.currency = user["currency"]
     profile.save()
+    dir = os.path.join(os.getcwd(), "tmp/prof/" + "1.jpg")
+    profile.profileImage.save(f"{username}.jpg", File(open(dir, "rb")))
+    return profile
 
 
 def add_prize(prize):
-    p = Prize.objects.get_or_create(prizeName=prize["name"])[0]
+    prize_name = prize["name"]
+    p = Prize.objects.get_or_create(prizeName=prize_name)[0]
     p.prizeValue = prize["value"]
     p.prizeRarity = prize["rarity"]
     p.save()
+    dir = os.path.join(os.getcwd(), "tmp/prize/" + "1.png")
+    p.prizeImage.save(f"{prize_name}.png", File(open(dir, "rb")))
     return p
 
 
 def add_achievement(achieve):
-    a = Achievement.objects.get_or_create(achievementName=achieve["name"])[0]
+    achievement_name = achieve["name"]
+    a = Achievement.objects.get_or_create(achievementName=achievement_name)[0]
     a.achievementDescription = achieve["description"]
     a.save()
+    dir = os.path.join(os.getcwd(), "tmp/achieve/" + "1.jpg")
+    a.achievementImage.save(f"{achievement_name}.jpg", File(open(dir, "rb")))
     return a
 
 
