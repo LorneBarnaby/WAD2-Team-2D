@@ -5,7 +5,9 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
-    # user = User.objects.get(username='JackKilpack')
+
+    # TEST VIEW - to check we can display user profile images in templates
+
     userProfile = UserProfile.objects.get(user__username="JackKilpack")
 
     context_dict = {}
