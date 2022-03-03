@@ -25,6 +25,13 @@ class UserProfile(models.Model):
 
     prizes = models.ManyToManyField(Prize)
     achievements = models.ManyToManyField(Achievement)
+    website = models.URLField(blank=True)
+
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+
+    def __str__(self):
+        return self.user.username
+
 
 
 
