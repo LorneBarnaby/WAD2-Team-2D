@@ -4,10 +4,18 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Prize(models.Model):
-    pass
+
+    prizeName = models.CharField(max_length=30)
+    prizeImage = models.ImageField(upload_to='prize_images')
+    prizeValue = models.IntegerField(default=0)
+    prizeRarity = models.CharField(max_length=30)
+
 
 class Achievement(models.Model):
-    pass
+
+    achievementName = models.CharField(max_lenth=30)
+    achievementDescription = models.CharField(max_length=256)
+    achievementImage = models.ImageField(upload_to='achievement_images')
 
 
 class UserProfile(models.Model):
