@@ -23,8 +23,12 @@ class UserProfile(models.Model):
     profileImage = models.ImageField(upload_to='profile_images', blank=True)
     currency = models.IntegerField(default=100)
 
-    prizes = models.ManyToManyField(Prize)
-    achievements = models.ManyToManyField(Achievement)
+    prizes = models.ManyToManyField(Prize, blank=True)
+    achievements = models.ManyToManyField(Achievement, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
 
 
 
