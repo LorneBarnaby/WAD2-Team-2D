@@ -11,11 +11,11 @@ Sign UP
 <h1>Sign Up for CR8</h1>
 {% if registered %}
 the CR8 Team says: <strong>thank you for your patronage!</strong>
-<a href="{% url 'CR8:index' %}">Return to the homepage.</a><br />
+<a href="{% url 'cr8:index' %}">Return to the homepage.</a><br />
 {% else %}
 
 <strong>Sign Up Here!</strong><br />
-<form id="user_form" method="post" action="{% url 'CR8:sign_up' %}" enctype="multipart/form-data">
+<form id="user_form" method="post" action="{% url 'cr8:sign_up' %}" enctype="multipart/form-data">
 {% csrf_token %}
     {{ user_form.as_p }}
     {{ profile_form.as_p }}
