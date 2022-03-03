@@ -13,10 +13,10 @@
 
     <body>
         <div class="cr8-top-bar">
-            <a href="{% url 'cr8:home' %}"><img src="{% static 'images/cr8_logo.png' %}" alt="CR8 Home"/></a>
+            <a href="{% url 'cr8:index' %}"><img src="{% static 'images/cr8_logo.png' %}" alt="CR8 Home"/></a>
             <a href="{% url 'cr8:leaderboard' %}">Leaderboard</a>
             {% if user.is_authenticated %}
-            <a href="{% url 'cr8:profile' %}/{{ user.username }}">View Profile</a> <!-- fix this link maybe? how to redirect to current user?-->
+            <a href="{% url 'cr8:profile' user.username %}">View Profile</a>
             <a href="{% url 'cr8:logout' %}">Logout</a>
             {% else %}
             <div class="login-container">
