@@ -5,17 +5,17 @@ from django.contrib.auth.models import User
 
 class Prize(models.Model):
 
-    prizeName = models.CharField(max_length=30)
-    prizeImage = models.ImageField(upload_to='prize_images')
+    prizeName = models.CharField(max_length=30, blank=True, unique=True)
+    prizeImage = models.ImageField(upload_to='prize_images', blank=True)
     prizeValue = models.IntegerField(default=0)
-    prizeRarity = models.CharField(max_length=30)
+    prizeRarity = models.CharField(max_length=30, blank=True)
 
 
 class Achievement(models.Model):
 
-    achievementName = models.CharField(max_length=30)
-    achievementDescription = models.CharField(max_length=256)
-    achievementImage = models.ImageField(upload_to='achievement_images')
+    achievementName = models.CharField(max_length=30, blank=True)
+    achievementDescription = models.CharField(max_length=256, blank=True)
+    achievementImage = models.ImageField(upload_to='achievement_images', blank=True)
 
 
 class UserProfile(models.Model):
