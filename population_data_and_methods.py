@@ -31,3 +31,17 @@ def generate_prize_lists():
         ["The Sky", 80000, "Rare"],
     ]
     return [create_pop_dict(key_list_prizes, prize_val) for prize_val in prize_vals]
+
+
+def generate_achievement_lists():
+    key_list_achivements = ["name", "description"]
+    achievement_vals = [
+        ["Derek's Pipe", "You found the pipe!"],
+        ["Big Spender", "Spent over n whatever currency we're using"],
+        ["Moneybags", "Have over n currency blah blah blah"],
+    ]
+
+    return [
+        create_pop_dict(key_list_achivements, achievement_val)
+        for achievement_val in achievement_vals
+    ]
