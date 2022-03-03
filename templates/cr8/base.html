@@ -20,8 +20,8 @@
             <a href="{% url 'cr8:logout' %}">Logout</a>
             {% else %}
             <div class="login-container">
-                <a href="{% 'cr8:login' %}" id="loginbtn">Login</a>
-                <a href="{% 'cr8:signup' %}" id="signupbtn">Sign Up</a>
+                <a href="{% url 'cr8:login' %}" id="loginbtn">Login</a>
+                <a href="{% url 'cr8:signup' %}" id="signupbtn">Sign Up</a>
             </div>
             {% endif %}
 
@@ -32,7 +32,7 @@
         </div>
 
         <div class="cr8-bottom-bar">
-            <a href="{% url 'cr8:about-us %}">About Us</a>
+            <a href="{% url 'cr8:about-us' %}">About Us</a>
             <a href="{% url 'cr8:contact-us' %}">Contact Us</a>
             <a href="{% url 'cr8:faqs' %}">FAQs</a>
         </div>
