@@ -26,10 +26,10 @@ def user(user_list):
         try:
             dir = os.path.join(os.getcwd(), "tmp/prof/" + filename)
             profile.profileImage.save(f"{filename}", File(open(dir, "rb")))
-            print(filename)
         except:
-            print("ooooo")
-        print(profile)
+            noProfFilename = "none.jpg"
+            dir = os.path.join(os.getcwd(), "tmp/prof/" + noProfFilename)
+            profile.profileImage.save(f"{filename}", File(open(dir, "rb")))
 
 
 def prize(prize_list):
