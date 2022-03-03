@@ -19,8 +19,21 @@ def populate():
     user_list = generate_user_lists()
     achievement_list = generate_achievement_lists()
 
+    image_check = input(
+        """
+Enter s to skip adding of images, enter anything else to not skip
+might be wise to skip if you've done it before as it'll just duplicate lots of images
+> """
+    )
+
+    add_images = True
+    if image_check == "n" or image_check == "N":
+        add_images = False
+
     for user in user_list:
-        add_user(user)
+        profile_django_object = add_user(user)
+        if add_images:
+            add_image_user(profile_django_object, user)
 
     for prize in prize_list:
         add_prize(prize)
@@ -28,14 +41,17 @@ def populate():
     for achieve in achievement_list:
         add_achievement(achieve)
 
-    image_check = input(
-        """Please enter 'n' if you would like to skip adding images
-    might be helpful if you've already done it as adding images
-    once you've already added them makes loads of duplicate images"""
-    )
 
-    if image_check != "n" or image_check != "N":
-        pass
+def add_image_user(profile, user_data):
+    filename = user_data["username"] + ".jpg"
+
+    try:
+        dir = os.path.join(os.getcwd(), "tmp/prof/" + filename)
+        profile.profileImage.save(f"{filename}", File(open(dir, "rb")))
+    except:
+        noProfFilename = "none.jpg"
+        dir = os.path.join(os.getcwd(), "tmp/prof/" + noProfFilename)
+        profile.profileImage.save(f"{filename}", File(open(dir, "rb")))
 
 
 def add_user(user):
@@ -46,8 +62,6 @@ def add_user(user):
     profile = UserProfile.objects.get_or_create(user=u)[0]
     profile.currency = user["currency"]
     profile.save()
-    dir = os.path.join(os.getcwd(), "tmp/prof/" + "1.jpg")
-    profile.profileImage.save(f"{username}.jpg", File(open(dir, "rb")))
     return profile
 
 
@@ -57,8 +71,8 @@ def add_prize(prize):
     p.prizeValue = prize["value"]
     p.prizeRarity = prize["rarity"]
     p.save()
-    dir = os.path.join(os.getcwd(), "tmp/prize/" + "1.png")
-    p.prizeImage.save(f"{prize_name}.png", File(open(dir, "rb")))
+    # dir = os.path.join(os.getcwd(), "tmp/prize/" + "1.png")
+    # p.prizeImage.save(f"{prize_name}.png", File(open(dir, "rb")))
     return p
 
 

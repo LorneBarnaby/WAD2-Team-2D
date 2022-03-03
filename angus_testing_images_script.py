@@ -19,7 +19,7 @@ user_list = generate_user_lists()
 achievement_list = generate_achievement_lists()
 
 
-def user(user_list):
+def add_user_images(user_list):
     for i in range(1, len(user_list) + 1):
         print(i)
         profile = UserProfile.objects.get(id=i)
