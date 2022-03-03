@@ -5,15 +5,22 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cr8_project.settings")
 import django
 
 django.setup()
-from CR8.models import UserProfile
+from CR8.models import UserProfile, Prize
 from django.contrib.auth.models import User
 
 
 def populate():
+    userIn = input(
+        "If this is the first time this is run, enter 'y', otherwise enter anything else: "
+    )
     prize_list = generate_prize_lists()
     user_list = generate_user_lists()
-    for user in user_list:
-        add_user(user)
+    if userIn == "y" or userIn == "Y":
+        for user in user_list:
+            add_user(user)
+
+    for prize in prize_list:
+        add_prize(prize)
 
 
 def add_user(user):
@@ -23,6 +30,14 @@ def add_user(user):
     profile = UserProfile(user=u)
     profile.currency = user["currency"]
     profile.save()
+
+
+def add_prize(prize):
+    p = Prize.objects.get_or_create(prizeName=prize["name"])[0]
+    p.prizeValue = prize["value"]
+    p.prizeRarity = prize["rarity"]
+    p.save()
+    return p
 
 
 populate()
