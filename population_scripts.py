@@ -20,7 +20,6 @@ def populate():
     prize_list = generate_prize_lists()
     user_list = generate_user_lists()
     achievement_list = generate_achievement_lists()
-    print(achievement_list)
     if userIn == "y" or userIn == "Y":
         for user in user_list:
             add_user(user)
