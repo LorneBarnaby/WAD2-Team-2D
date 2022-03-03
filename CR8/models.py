@@ -13,7 +13,7 @@ class Prize(models.Model):
 
 class Achievement(models.Model):
 
-    achievementName = models.CharField(max_lenth=30)
+    achievementName = models.CharField(max_length=30)
     achievementDescription = models.CharField(max_length=256)
     achievementImage = models.ImageField(upload_to='achievement_images')
 
