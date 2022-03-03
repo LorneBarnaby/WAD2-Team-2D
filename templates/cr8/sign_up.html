@@ -15,7 +15,7 @@ the CR8 Team says: <strong>thank you for your patronage!</strong>
 {% else %}
 
 <strong>Sign Up Here!</strong><br />
-<form id="user_form" method="post" action="{% url 'CR8:signup' %}" enctype="multipart/form-data">
+<form id="user_form" method="post" action="{% url 'CR8:sign_up' %}" enctype="multipart/form-data">
 {% csrf_token %}
     {{ user_form.as_p }}
     {{ profile_form.as_p }}
