@@ -53,6 +53,6 @@ def achievement(achievement_list):
         achieve.achievementImage.save(f"{filename_out}", File(open(dir, "rb")))
 
 
-user(user_list)
+add_user_images(user_list)
 prize(prize_list)
 achievement(achievement_list)

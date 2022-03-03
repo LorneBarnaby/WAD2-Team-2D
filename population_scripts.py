@@ -42,7 +42,9 @@ as it'll just duplicate lots of images
             add_image_prize(prize_django_object, prize)
 
     for achieve in achievement_list:
-        add_achievement(achieve)
+        achieve_django_object = add_achievement(achieve)
+        if add_images:
+            add_image_achievement(achieve_django_object, achieve)
 
 
 def add_user(user):
@@ -62,8 +64,6 @@ def add_prize(prize):
     p.prizeValue = prize["value"]
     p.prizeRarity = prize["rarity"]
     p.save()
-    # dir = os.path.join(os.getcwd(), "tmp/prize/" + "1.png")
-    # p.prizeImage.save(f"{prize_name}.png", File(open(dir, "rb")))
     return p
 
 
@@ -72,8 +72,6 @@ def add_achievement(achieve):
     a = Achievement.objects.get_or_create(achievementName=achievement_name)[0]
     a.achievementDescription = achieve["description"]
     a.save()
-    dir = os.path.join(os.getcwd(), "tmp/achieve/" + "1.jpg")
-    a.achievementImage.save(f"{achievement_name}.jpg", File(open(dir, "rb")))
     return a
 
 
@@ -94,6 +92,13 @@ def add_image_prize(prize, prize_data):
     filename_out = prize_data["name"] + ".jpg"
     dir = os.path.join(os.getcwd(), "tmp/prize/" + filename_in)
     prize.prizeImage.save(f"{filename_out}", File(open(dir, "rb")))
+
+
+def add_image_achievement(achieve, achieve_data):
+    filename_in = str(achieve.id) + ".jpg"
+    filename_out = achieve_data["name"] + ".jpg"
+    dir = os.path.join(os.getcwd(), "tmp/achieve/" + filename_in)
+    achieve.achievementImage.save(f"{filename_out}", File(open(dir, "rb")))
 
 
 populate()
