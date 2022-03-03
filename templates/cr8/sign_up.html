@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+{% extends 'cr8/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+Sign UP
+{% endblock %}
+{% block body_block %}
+<h1>Sign Up for CR8</h1>
+{% if registered %}
+the CR8 Team says: <strong>thank you for your patronage!</strong>
+<a href="{% url 'CR8:index' %}">Return to the homepage.</a><br />
+{% else %}
+
+<strong>Sign Up Here!</strong><br />
+<form id="user_form" method="post" action="{% url 'CR8:signup' %}" enctype="multipart/form-data">
+{% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <!-- Provide a button to click to submit the form. -->
+    <input type="submit" name="submit" value="signupbtn" />
+</form>
+{% endif %}
+{% endblock %}
+</body>
+</html>
