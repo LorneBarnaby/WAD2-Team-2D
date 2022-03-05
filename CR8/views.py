@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from CR8.models import UserProfile
 from .forms import UserForm, UserProfileForm
+from django.contrib.auth import authenticate, login
+from django.urls import reverse
 
 # Create your views here.
 def index(request):
