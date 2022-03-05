@@ -49,4 +49,21 @@ def sign_up(request):
 
 
 def login(request):
-    pass
+    return render(request, 'cr8/login.html')
+
+
+def about_us(request):
+    return render(request, 'cr8/about-us.html')
+
+def leaderboard(request):
+    return render(request, 'cr8/leaderboard.html')
+
+
+def contact_us(request):
+    return render(request, 'cr8/contact-us.html')
+
+def faqs(request):
+    return render(request, 'cr8/faqs.html')
+
+def profile(request):
+    return render(request, 'cr8/profile.html')
