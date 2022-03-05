@@ -3,6 +3,7 @@
 
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
         <title>
             CR8 -
             {% block title_block %}
@@ -13,7 +14,7 @@
 
     <body>
         <div class="cr8-top-bar">
-            <a href="{% url 'cr8:index' %}"><img src="{% static 'images/cr8_logo.png' %}" alt="CR8 Home"/></a>
+            <a href="{% url 'cr8:index' %}"><img id="home-image" src="{% static 'images/cr8_logo.png' %}" alt="CR8 Home"/></a>
             <a href="{% url 'cr8:leaderboard' %}">Leaderboard</a>
             {% if user.is_authenticated %}
             <a href="{% url 'cr8:profile' user.username %}">View Profile</a>
