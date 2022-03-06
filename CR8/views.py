@@ -1,4 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
@@ -64,13 +65,14 @@ def contact_us(request):
 def faqs(request):
     return render(request, 'cr8/faqs.html')
 
-def profile(request):
+def profile(request,username):
     return render(request, 'cr8/profile.html')
+
 def user_login(request):
     if request.method == 'POST':
 
-        username = request.POST.get('username', "JackKilpack")
-        password = request.POST.get('password', "ExamplePassword 12 !")
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
         user = authenticate(username=username, password=password)
 
@@ -86,3 +88,11 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
     else:
         return render(request, 'cr8/login.html')
+
+
+@login_required
+def user_logout(request):
+    # Since we know the user is logged in, we can now just log them out.
+    logout(request)
+    # Take the user back to the homepage.
+    return redirect(reverse('cr8:index'))
