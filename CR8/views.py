@@ -1,13 +1,16 @@
-from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.urls import reverse
+
 from CR8.models import UserProfile
 from .forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
 
+
 # Create your views here.
 def index(request):
-
     # TEST VIEW - to check we can display user profile images in templates
 
     userProfile = UserProfile.objects.get(user__username="JackKilpack")
@@ -15,13 +18,11 @@ def index(request):
     context_dict = {}
     context_dict['UserProfile'] = userProfile
 
-
     print(userProfile.profileImage.url)
     return render(request, 'cr8/index.html', context=context_dict)
 
 
 def sign_up(request):
-
     registered = False
     if request.method == 'POST':
         user_form = UserForm(request.POST)
@@ -50,10 +51,6 @@ def sign_up(request):
                   context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
 
 
-def login(request):
-    return render(request, 'cr8/login.html')
-
-
 def about_us(request):
     return render(request, 'cr8/about-us.html')
 
@@ -69,3 +66,23 @@ def faqs(request):
 
 def profile(request):
     return render(request, 'cr8/profile.html')
+def user_login(request):
+    if request.method == 'POST':
+
+        username = request.POST.get('username', "JackKilpack")
+        password = request.POST.get('password', "ExamplePassword 12 !")
+
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                print('user logged in: ', user)
+                return redirect(reverse('cr8:index'))
+            else:
+                return HttpResponse("Your account is disabled.")
+        else:
+            print(f"Invalid login details: {username}")
+            return HttpResponse("Invalid login details supplied.")
+    else:
+        return render(request, 'cr8/login.html')
