@@ -8,6 +8,15 @@
 
 {% block body_block %}
 
+    <h1> Test Leaderboard Page </h1>
+
+    <div>
+        <ol>
+            {% for user_profile in user_profile_list %}
+            <li> {{ user_profile.user.username }} - currency: {{ user_profile.currency }}</li>
+            {% endfor %}
+        </ol>
+    </div>
 
 {% endblock %}
 

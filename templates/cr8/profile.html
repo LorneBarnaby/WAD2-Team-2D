@@ -8,5 +8,31 @@
 
 {% block body_block %}
 
+    {% if user_profile %}
+        <h1> Test Profile Page </h1>
+        <div>
+
+            <p> This is {{ user_profile.user.username }}'s profile </p>
+            <img src={{ user_profile.profileImage.url }}></img>
+
+        </div>
+
+        <div>
+        {% if user_prize_list %}
+            <ul>
+                {% for prize in user_prize_list %}
+                <li> {{ prize.prizeName }} </li>
+                {% endfor %}
+            </ul>
+
+        {% endif %}
+        </div>
+    {% else %}
+        <div>
+            <p> <strong> The specified user does not exist. </strong> </p>
+        </div>
+    {% endif %}
+
+
 
 {% endblock %}
