@@ -28,7 +28,7 @@ as it'll just duplicate lots of images
     )
 
     add_images = True
-    if image_check == "n" or image_check == "N":
+    if image_check == "s" or image_check == "S":
         add_images = False
 
     for user in user_list:
