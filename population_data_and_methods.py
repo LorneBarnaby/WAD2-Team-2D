@@ -34,11 +34,11 @@ def generate_prize_lists():
 
 
 def generate_achievement_lists():
-    key_list_achivements = ["name", "description"]
+    key_list_achivements = ["name", "description", "imagename"]
     achievement_vals = [
-        ["Derek's Pipe", "You found the pipe!"],
-        ["Big Spender", "Spent over n whatever currency we're using"],
-        ["Moneybags", "Have over n currency blah blah blah"],
+        ["Derek's Pipe", "You found the pipe!", "1.jpg"],
+        ["Big Spender", "Spent over n whatever currency we're using", "2.jpg"],
+        ["Moneybags", "Have over n currency blah blah blah", "3.jpg"],
     ]
 
     return [

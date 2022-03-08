@@ -92,10 +92,9 @@ def add_image_prize(prize, prize_data):
 
 
 def add_image_achievement(achieve, achieve_data):
-    filename_in = str(achieve.id) + ".jpg"
-    filename_out = achieve_data["name"] + ".jpg"
-    dir = os.path.join(os.getcwd(), "tmp/achieve/" + filename_in)
-    achieve.achievementImage.save(f"{filename_out}", File(open(dir, "rb")))
+    filename = achieve_data["imagename"]
+    dir = os.path.join(os.getcwd(), "tmp/achieve/" + filename)
+    achieve.achievementImage.save(filename, File(open(dir, "rb")))
 
 
 populate()

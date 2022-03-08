@@ -8,10 +8,7 @@ class Prize(models.Model):
     prizeName = models.CharField(max_length=30, blank=True, unique=True)
     prizeImage = models.ImageField(upload_to="prize_images", blank=True)
     prizeValue = models.IntegerField(default=0)
-    prizeImageFilename = models.CharField(max_length=30, blank=True)
-    prizeRarity = models.CharField(
-        max_length=30, blank=True, choices=RARITY.model_choices()
-    )
+    prizeRarity = models.CharField(max_length=30, blank=True, choices=RARITY.model_choices())
 
 
 class Achievement(models.Model):
