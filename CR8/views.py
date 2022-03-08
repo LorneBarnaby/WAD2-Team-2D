@@ -72,17 +72,17 @@ def contact_us(request):
 def faqs(request):
     return render(request, 'cr8/faqs.html')
 
-def profile(request,username):
+def profile(request,username_slug):
 
     context_dict = {}
 
-    if request.user.is_authenticated and request.user.username == username:
+    if request.user.is_authenticated and request.user.username == username_slug:
         context_dict['is_current_user'] = True
     else:
         context_dict['is_current_user'] = False
 
     try:
-        user_profile = UserProfile.objects.get(user__username=username)
+        user_profile = UserProfile.objects.get(username_slug=username_slug)
         user_prize_list = Prize.objects.filter(userprofile=user_profile)
         user_achievement_list = Achievement.objects.filter(userprofile=user_profile)
 
