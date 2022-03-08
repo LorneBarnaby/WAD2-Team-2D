@@ -82,16 +82,13 @@ def add_image_user(profile, user_data):
         dir = os.path.join(os.getcwd(), "tmp/prof/" + filename)
         profile.profileImage.save(f"{filename}", File(open(dir, "rb")))
     except:
-        noProfFilename = "none.jpg"
-        dir = os.path.join(os.getcwd(), "tmp/prof/" + noProfFilename)
-        profile.profileImage.save(f"{filename}", File(open(dir, "rb")))
+        pass
 
 
 def add_image_prize(prize, prize_data):
-    filename_in = str(prize.id) + ".jpg"
-    filename_out = prize_data["name"] + ".jpg"
-    dir = os.path.join(os.getcwd(), "tmp/prize/" + filename_in)
-    prize.prizeImage.save(f"{filename_out}", File(open(dir, "rb")))
+    filename = prize_data["imagename"]
+    dir = os.path.join(os.getcwd(), "tmp/prize/" + filename)
+    prize.prizeImage.save(filename, File(open(dir, "rb")))
 
 
 def add_image_achievement(achieve, achieve_data):

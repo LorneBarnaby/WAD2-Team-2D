@@ -4,12 +4,14 @@ from django.template.defaultfilters import slugify
 from CR8.rarity import RARITY
 
 
-
 class Prize(models.Model):
     prizeName = models.CharField(max_length=30, blank=True, unique=True)
     prizeImage = models.ImageField(upload_to="prize_images", blank=True)
     prizeValue = models.IntegerField(default=0)
-    prizeRarity = models.CharField(max_length=30, blank=True, choices=RARITY.model_choices())
+    prizeImageFilename = models.CharField(max_length=30, blank=True)
+    prizeRarity = models.CharField(
+        max_length=30, blank=True, choices=RARITY.model_choices()
+    )
 
 
 class Achievement(models.Model):
@@ -28,7 +30,7 @@ class UserProfile(models.Model):
     prizes = models.ManyToManyField(Prize, blank=True)
     achievements = models.ManyToManyField(Achievement, blank=True)
 
-    username_slug = models.CharField(max_length=30,blank=True)
+    username_slug = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
         return self.user.username

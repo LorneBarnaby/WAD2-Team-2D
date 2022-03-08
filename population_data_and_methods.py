@@ -23,12 +23,12 @@ def generate_user_lists():
 
 
 def generate_prize_lists():
-    key_list_prizes = ["name", "value", "rarity"]
+    key_list_prizes = ["name", "value", "rarity", "imagename"]
     prize_vals = [
-        ["Integer Overflow Error", 9223372036854775807, "ULTRA RARE!"],
-        ["Common Derek", 5, "Common!"],
-        ["Pipe Derek", 40000, "Rare-ish"],
-        ["The Sky", 80000, "Rare"],
+        ["Integer Overflow Error", 9223372036854775807, "ULTRA RARE!", "1.jpg"],
+        ["Common Derek", 5, "Common!", "2.jpg"],
+        ["Pipe Derek", 40000, "Rare-ish", "3.jpg"],
+        ["The Sky", 80000, "Rare", "4.jpg"],
     ]
     return [create_pop_dict(key_list_prizes, prize_val) for prize_val in prize_vals]
 
