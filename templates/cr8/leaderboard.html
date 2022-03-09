@@ -10,6 +10,11 @@
 
     <h1> Test Leaderboard Page </h1>
 
+    {% if user.is_authenticated %}
+        <div>
+            <p> (your position: {{ curr_position_in_leaderboard }} ) </p>
+        </div>
+    {% endif %}
     <div>
         <ol>
             {% for user_profile in user_profile_list %}
