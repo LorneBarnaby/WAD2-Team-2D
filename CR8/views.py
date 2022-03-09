@@ -12,14 +12,22 @@ from django.urls import reverse
 
 # Create your views here.
 def index(request):
-    # TEST VIEW - to check we can display user profile images in templates
-
-    userProfile = UserProfile.objects.get(user__username="JackKilpack")
 
     context_dict = {}
-    context_dict['UserProfile'] = userProfile
 
-    print(userProfile.profileImage.url)
+    try:
+        user_profile = UserProfile.objects.get(user__username=request.user)
+        user_prize_list = Prize.objects.filter(userprofile=user_profile).order_by('-prizeValue')[:5]
+        user_currency = user_profile.currency
+        context_dict['user_profile'] = user_profile
+        context_dict['user_prize_list'] = user_prize_list
+        context_dict['user_currency'] = user_currency
+
+    except UserProfile.DoesNotExist:
+        context_dict['user_profile'] = None
+        context_dict['user_prize_list'] = None
+        context_dict['user_currency'] = None
+
     return render(request, 'cr8/index.html', context=context_dict)
 
 
