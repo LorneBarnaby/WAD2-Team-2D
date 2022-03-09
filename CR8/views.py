@@ -63,6 +63,13 @@ def leaderboard(request):
 
     context_dict["user_profile_list"] = user_profile_list
 
+    curr_position_in_leaderboard = None
+    if request.user.is_authenticated:
+        for leaderboard_index, user_profile in enumerate(user_profile_list):
+            if user_profile.user.username == request.user.username:
+                curr_position_in_leaderboard = (leaderboard_index + 1)
+        context_dict['curr_position_in_leaderboard'] = curr_position_in_leaderboard
+
     return render(request, 'cr8/leaderboard.html', context=context_dict)
 
 
