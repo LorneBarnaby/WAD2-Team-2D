@@ -155,11 +155,19 @@ h3 {
     align-items: center;
 
 }
+.zoom{
+    transition: transform .2s;
+}
 
 .infobox img {
     height: 230px;
     width: auto;
     padding: 20px;
+}
+.zoom:hover {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(2);
 }
 
 .contentbox {

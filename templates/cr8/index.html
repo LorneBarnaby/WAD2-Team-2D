@@ -55,7 +55,7 @@
                             <li id="prize_list">
                                 <div>{{ prize.prizeName }}</div>
                                 <div>Value: {{  prize.prizeValue }}</div>
-                            <img src="{{ prize.prizeImage.url }}" alt="Prize image"></li>
+                            <img class="zoom" src="{{ prize.prizeImage.url }}" alt="Prize image"></li>
                         {% endfor %}
                     {% else %}
                         <p>Start buying cr8's to earn prizes!</p>
