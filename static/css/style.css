@@ -23,6 +23,7 @@ h4{
 }
 h5{
     font-size: 100px;
+    margin:0;
 }
 h2{
     color: #c067ed;
@@ -125,10 +126,18 @@ h3{
     background-size: cover;
     background-image: url('stacked-waves1.svg');
 
+    display:flex;
+    justify-content: center;
+
+}
+
+#right_half_container{
+    height:500px;
+    width:700px;
 
     display: flex;
     flex-direction: column;
-    /*justify-content: space-evenly;*/
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -169,6 +178,12 @@ h3{
     display:flex;
     align-items: flex-end;
 
+}
+
+#cr8-box{
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
 }
 
 /*.wrapper{*/

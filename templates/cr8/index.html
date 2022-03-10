@@ -19,9 +19,9 @@
                             with an item, complete with image, description, rarity, and most importantly: a value!
                             Sell your treasured cr8s for in-game currency, and try to reach the top of the leaderboard.
                             Strive to earn achievements from your openings.
-                        </br>
+                            </br>
                             Will you reach illustrious peaks? Don't w8, sign up now to find out!
-                            </p>
+                        </p>
                     </div>
                     <img src="{% static 'images/present.png' %}" alt="Image of a present."/>
                 </div>
@@ -40,14 +40,14 @@
                             would.
                             but
                             we won't. we promise. who is we? who's asking? you are. who are you? checkmate.
-                           </p>
+                        </p>
                     </div>
                 </div>
 
             </div>
         </div>
         <div class="contentbox bottom">
-            <div style="padding:10px">
+            <div style="padding:15px">
                 <h3>Your top prizes</h3>
                 {% if user.is_authenticated %}
                     {% if user_prize_list %}
@@ -66,20 +66,22 @@
     </div>
 
     <div id="right_half">
-        {% if user.is_authenticated %}
-            <h4>Price: 20, currency: {{ user_currency }}</h4>
-        {% else %}
+        <div id="right_half_container">
             <h4>Price: 20</h4>
-        {% endif %}
-        <div id="cr8-box-container">
-            <img id="cr8-box" src="{% static 'images/cr8_cube.png' %}" alt="Image of a cr8.">
+            <div id="cr8-box-container">
+                <img id="cr8-box" src="{% static 'images/cr8_cube.png' %}" alt="Image of a cr8.">
+            </div>
+            <div id="openbtn">
+                <h5>
+                    OPEN
+                </h5>
+            </div>
+            {% if user.is_authenticated %}
+                <h4>Currency: {{ user_currency }}</h4>
+            {% else %}
+                <h4>Login to see your currency</h4>
+            {% endif %}
         </div>
-        <div id="openbtn">
-            <h5>
-                OPEN
-            </h5>
-        </div>
-
     </div>
     {#        <p>{{ UserProfile.user.username}}</p>#}
     {#        <img src={{ UserProfile.profileImage.url }}></img>#}
