@@ -17,25 +17,27 @@ body {
     color: white;
 }
 
-h4{
+h4 {
     font-size: 34px;
     color: #6a2a88;
 }
-h5{
+
+h5 {
     font-size: 100px;
-    margin:0;
+    margin: 0;
 }
-h2{
+
+h2 {
     color: #c067ed;
     font-size: 34px;
     margin: 0;
-    padding:0;
+    padding: 0;
 }
 
-h3{
-    font-size:28px;
-    margin:0;
-    padding:0;
+h3 {
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -97,8 +99,9 @@ h3{
     font-size: 12px;
     color: white;
 }
-.centre{
-    position:relative;
+
+.centre {
+    position: relative;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -126,14 +129,14 @@ h3{
     background-size: cover;
     background-image: url('stacked-waves1.svg');
 
-    display:flex;
+    display: flex;
     justify-content: center;
 
 }
 
-#right_half_container{
-    height:500px;
-    width:700px;
+#right_half_container {
+    height: 500px;
+    width: 700px;
 
     display: flex;
     flex-direction: column;
@@ -141,49 +144,76 @@ h3{
     align-items: center;
 }
 
-.infobox{
+.infobox {
     width: 80%;
     margin: 30px;
 }
 
-.wrapper{
-    display:flex;
+.wrapper {
+    display: flex;
     justify-content: left;
     align-items: center;
 
 }
 
-.infobox img{
-    height:230px;
-    width:auto;
+.infobox img {
+    height: 230px;
+    width: auto;
     padding: 20px;
 }
 
-.contentbox{
+.contentbox {
     background-color: #4c555c;
     margin: 5%;
     box-shadow: #1c1e1f -10px 10px;
-    width:90%;
+    width: 90%;
 }
 
+#prize_list {
+    width: 40%;
+    /*min-height: 250px;*/
+    /*border: 1px solid #000;*/
+    background-color: #2c2f32;
+    display: inline-block;
+    margin: 20px;
 
-.left{
-    float:left;
+
 }
 
-.right{
-    float:right;
+#prize_list img{
+    height:100px;
+    width:auto;
+    padding:5px;
 }
-.bottom{
-    display:flex;
+
+/*#prize_list{*/
+/*    align-items: center;*/
+/*    columns: 2;*/
+/*}*/
+
+/*#prize_list img{*/
+/*    height:100px;*/
+/*    width:auto;*/
+/*}*/
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.bottom {
+    display: flex;
     align-items: flex-end;
 
 }
 
-#cr8-box{
+#cr8-box {
     max-width: 100%;
     height: auto;
-    width: auto\9;
+    width: auto \9;
 }
 
 /*.wrapper{*/

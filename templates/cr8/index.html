@@ -52,8 +52,10 @@
                 {% if user.is_authenticated %}
                     {% if user_prize_list %}
                         {% for prize in user_prize_list %}
-                            {#                            need to add images, and css for positioning prizes#}
-                            <li>{{ prize.prizeName }}</li>
+                            <li id="prize_list">
+                                <div>{{ prize.prizeName }}</div>
+                                <div>Value: {{  prize.prizeValue }}</div>
+                            <img src="{{ prize.prizeImage.url }}" alt="Prize image"></li>
                         {% endfor %}
                     {% else %}
                         <p>Start buying cr8's to earn prizes!</p>

@@ -21,7 +21,7 @@ def index(request):
 
     try:
         user_profile = UserProfile.objects.get(user__username=request.user)
-        user_prize_list = Prize.objects.filter(userprofile=user_profile).order_by('-prizeValue')[:5]
+        user_prize_list = Prize.objects.filter(userprofile=user_profile).order_by('-prizeValue')[:6]
         user_currency = user_profile.currency
         context_dict['user_profile'] = user_profile
         context_dict['user_prize_list'] = user_prize_list
