@@ -10,11 +10,17 @@ class Prize(models.Model):
     prizeValue = models.IntegerField(default=0)
     prizeRarity = models.CharField(max_length=30, blank=True, choices=RARITY.model_choices())
 
+    def __str__(self):
+        return self.prizeName
+
 
 class Achievement(models.Model):
     achievementName = models.CharField(max_length=30, blank=True)
     achievementDescription = models.CharField(max_length=256, blank=True)
     achievementImage = models.ImageField(upload_to="achievement_images", blank=True)
+
+    def __str__(self):
+        return self.achievementName
 
 
 class UserProfile(models.Model):
