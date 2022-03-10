@@ -3,11 +3,15 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
+import json
 
 from CR8.models import UserProfile, Prize, Achievement
 from .forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
 from django.urls import reverse
+
+from CR8.rarity import RARITY
+from random import randint, choices
 
 
 # Create your views here.
@@ -21,6 +25,19 @@ def index(request):
 
     print(userProfile.profileImage.url)
     return render(request, 'cr8/index.html', context=context_dict)
+
+
+@login_required
+def generate_prizes(request):
+    chosen_rarity = choices([str(r) for r in RARITY], [r.rarity for r in RARITY])
+    items = Prize.objects.filter(prizeRarity=chosen_rarity[0]).all()
+    chosen = items[randint(0,items.count())]
+    values = { "prizeName": chosen.prizeName,"prizeRarity":chosen.prizeRarity, "prizeValue": chosen.prizeValue}
+    UserProfile.prizes.add(chosen)
+    UserProfile.save()
+    return json.dumps(values)
+
+
 
 
 def sign_up(request):
