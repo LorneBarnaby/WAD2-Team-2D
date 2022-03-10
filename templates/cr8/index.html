@@ -8,138 +8,78 @@
 
 {% block body_block %}
     <div id="left_half">
-        <p>This is some temporary text. It should be on the left half of the screen. Below is a long bit of text to show
-            that
-            this side of the screen scrolls while the other doesn't.</p>
-        <p>Let me tell you about Yuri the Russian diver. You see, Yuri, he's this middle-aged Russian worker. Hard
-            worker, but he has to be, growing up in the poor neighbourhoods of Moscow. Doesn't like violence, so he
-            doesn't join the army, and the only thing he's really good at is physical labour. Poor Yuri's daily routine
-            was basically to get out of bed in his cramped, dirty little bachelor apartment, really just a hole in the
-            wall, then walk to work through muddy streets in the summer, slushy streets in the winter, and break his
-            back for ten hours a day to get paid thirty rubles a month.
+        <div>
+            <div class="infobox">
 
-            Every day, when he comes home, he falls asleep with the mantra in his head: Yuri, it's okay. Everyone has a
-            difficult life here, and you are used to it. You are used to these hardships. Don't let them bother you. And
-            every day, he'd wake up and do it all over again.
+                <div class="wrapper">
+                    <div>
+                        <h2>How to play</h2>
+                        <p>cr8 is an interactive lootbox game that allows you to collect exciting prizes! To start
+                            collecting prizes, simply make an account and open your first cr8. You will be rewarded
+                            with an item, complete with image, description, rarity, and most importantly: a value!
+                            Sell your treasured cr8s for in-game currency, and try to reach the top of the leaderboard.
+                            Strive to earn achievements from your openings.
+                        </br>
+                            Will you reach illustrious peaks? Don't w8, sign up now to find out!
+                            </p>
+                    </div>
+                    <img src="{% static 'images/present.png' %}" alt="Image of a present."/>
+                </div>
 
-            But, one day, as he was walking home from the quarry, he sees this huge billboard on the side of a building
-            that had just been put up. Rise of capitalism and all that jazz. On the billboard is a beautiful Russian
-            woman in a bathing-suit, posing and flashing her pretty teeth. Under the woman is the address to the local
-            gymnasium and the phrase: LEARN TO SWIM! TEN RUBLES!
+            </div>
 
-            So, naturally Yuri is a bit hesitant. That's a third of his monthly earnings, but he sees the pretty girl on
-            the advertisement and starts thinking, Yuri! Look at that! Maybe, if you go to the pool and learn to swim,
-            you could meet a beautiful woman like that! Maybe this life of hardships and toil doesn't have to be so
-            dull!
+            <div class="infobox right">
+                {#                <h2 class="right">What are your odds?</h2>#}
+                <div class="wrapper">
+                    <img src="{% static 'images/luck.png' %}" alt="Image of a clover."/>
+                    <div>
+                        <h2>What are the odds?</h2>
+                        <p>you are definitely gonna win. keep playing.
+                            it is good. continue to play. all is well
+                            . your chances are good. they are not rigged. no chance. would we do that to you? yes. we
+                            would.
+                            but
+                            we won't. we promise. who is we? who's asking? you are. who are you? checkmate.
+                           </p>
+                    </div>
+                </div>
 
-            So, Yuri convinces himself to go. He saves up a bit of money, and sure enough, a week later he is at the gym
-            and he slaps down the ten rubles to learn to swim. Now, while he didn't meet any beautiful women there
-            because mostly it was just lonely guys who responded to the ad, he decided not to let that ruin the
-            investment and he took to swimming with his entire being. His Russian work ethic made him excel in all his
-            classes, and soon, he had learned the front stroke, the back stroke, and was swimming laps like an Olympic
-            hopeful. For a time, he was very happy, but slowly, he realized he would not meet any beautiful women at the
-            pool, and he was not learning anything else from the novice instructors.
-
-            So, he goes back to his usual life of hardships, working at the quarry, and only goes to the pool once in a
-            while when he has a day off to keep up his swimming. But then, one day, as he is returning from work...he
-            sees that the billboard has changed. LEARN TO DIVE! TWENTY RUBLES! With the sexy Russian woman now in a
-            two-piece suit, nonetheless.
-
-            So, once again, Yuri says: Yuri! Look at that! Maybe, if you learn to dive, you could finally meet that
-            beautiful woman, and at the very least, swimming will be exciting again! Maybe this life of hardships and
-            toil doesn't have to be so dull!
-
-            Naturally, twenty rubles takes him a while to save up. He suffers incredible hardships, eating only the
-            cheapest food. He doesn't pay his electricity bill for a month, and ends up spending many nights cold and
-            shivering in addition to the usual hardships. However, it lasts only a few weeks and he has easily saved his
-            rubles. Goes down to the gym and plunks down the money, informing the cashier that he intends to learn to
-            dive!
-
-            So, he puts all his effort into learning to dive.Learns the half-gainer, full-gainer, back-flips,
-            swan-dives... Mastered it all in less than a week. Our man Yuri was making high-dives at the end of the
-            month that would have put him on the jet to Olympia.
-
-            Still, it wasn't enough to completely remove him from the hardships of reality. There were a few women in
-            the class, but they were all future hopefuls that were ten or twelve years old. Yuri never met the hot woman
-            from the billboard, but soon he was the best in his class...nay...in Russia! So he became dejected again
-            with the fact that he could not learn anything more and started picking up overtime at the quarry instead of
-            going to the pool. This only made him more miserable, and soon, he had accepted that his life of hardships
-            was not going to get any better.
-
-            Then, one day, he sees a new billboard up on the building as he's coming home from work. This one has a
-            beautiful American woman on it, smiling and waving in front of the Statue of Liberty. Under the picture is:
-            COME TO AMERICA! FIFTY RUBLES!
-
-            Yuri sighs and convinces himself to keep walking. But the next day, and the next day, he sees that sign and
-            that promise of a new life in America, and he gets to thinking: Yuri! What are you doing here? You are the
-            best swimmer in all of Russia, and yet, you wallow in your life of hardships! You are the best diver in all
-            of Russia, and yet you go every day to your depressing job! Yuri, maybe if you go to America, you can leave
-            your life of tiring work and hardships behind, and finally meet some nice women! YES! Yuri, don't you see?
-            This is a sign!
-
-            So, Yuri begins to save up all his money. He eats nothing but the poorest food and even starts going to the
-            homeless soup kitchen to make sure he is strong enough to keep working all the overtime he is pulling in. He
-            sells all his worldly possessions minus a few sets of clothes and his bathing suit. Finally, after suffering
-            incredible hardships - long, exhausting days and near-sleepless, shivering nights for an entire month - he
-            is able to finally sell his little apartment and scrape together the fifty rubles plus food for the
-            two-week-long trip by steamer.
-
-            Yuri the Greatest Swimmer and Diver in all of Russia walks down to the harbour, finds the ticket counter and
-            plops down the fifty rubles, saying to the lady: 'Take me to America! I am leaving this life of hardship
-            behind!'
-
-            Now, Yuri gets on the boat and they leave the port, heading West that very afternoon. It is a fine, sturdy
-            boat, so his fears are lessened right away, and there are many other passengers who are like him, and who
-            have even heard of Yuri's excellent skill at diving, so he has lots of people to talk to. In fact, he's
-            almost a celebrity on board. But, with nothing to do but stare out the windows or wander around on the deck,
-            everyone starts to get restless and bored. Yuri gets tired of talking about diving with everyone so he
-            basically just sits in his cabin room and does nothing.
-
-            But, of course, Yuri is used to hardships and manages to keep himself busy by imagining all the things he
-            can do once he gets to America. In fact, one day, about half-way though the trip, he starts to figure out he
-            could open up a swimming school, and this makes him very excited. Before he can start drawing out plans,
-            however...BOOM!
-
-            The boat slowly comes to a stop in the middle of the ocean and the captain comes onto the intercom. He says
-            that one of the engines broke down and it will be at least three hours before they will be moving again.
-            This makes all the bored people even more antsy, and Yuri hears many people grumbling and mad and
-            complaining as he walks around that day. Suddenly, he comes up with an idea!
-
-            He says to himself: Yuri, you are the best Swimmer in all of Russia, are you not? You are the best Diver in
-            all of Russia, too! Why not use this time to enjoy the ocean and go for a dive? Surely the Captain wouldn't
-            mind! And sure enough, word that an expert diver putting on a show circulates around the boat and the
-            captain agrees, hoping it will entertain and calm the passengers as the repairs finish. The water is
-            tranquil and beautiful. The air is warm and there have been no signs of sharks or danger for miles and
-            miles. So, confident it is safe, Yuri finally runs to his cabin and changes into his bathing suit. He even
-            looks at the clock to make sure he waited an hour after breakfast before swimming.
-
-            When he comes up onto deck, most of the ship is there to watch. Everyone is excited and whispering: he's
-            Yuri! The best Diver in all of Russia! This will be quite a show! Yuri, well, he is filled with happiness
-            and confidence, so he declares to the crowd: I will attempt my highest dive ever from the top of the crow's
-            nest!
-
-            So, he climbs up the ladder to the crow's nest high above the deck. It takes him a few minutes to get up
-            there, but by the time he has finished climbing, everyone is excited and even the crew is watching. So,
-            without wanting to wait too long, Yuri stretches, readies himself, and even checks the air with a lick of
-            his finger."
-
-            Yuri takes a few steps back on the crow's nest, then runs and leaps into the air! Two back flips! Then, a
-            corkscrew! Then, a front flip! Then...BAM!
-
-            Yuri missed the edge of the boat and accidentally hit the metal deck! And everyone is sure he's hurt or
-            dead, but as everyone comes running up to him, shouting 'Yuri! Yuri! Are you alright!?! Yuri! Are you hurt?
-            Yuri!!!' he gets up, rubbing his head painfully. Then, he turns to the surprised audience, and says: 'It's
-            okay. I'm alright. I'm used to hard-ships.'</p>
-    </br>
-
+            </div>
+        </div>
+        <div class="contentbox bottom">
+            <div style="padding:10px">
+                <h3>Your top prizes</h3>
+                {% if user.is_authenticated %}
+                    {% if user_prize_list %}
+                        {% for prize in user_prize_list %}
+                            {#                            need to add images, and css for positioning prizes#}
+                            <li>{{ prize.prizeName }}</li>
+                        {% endfor %}
+                    {% else %}
+                        <p>Start buying cr8's to earn prizes!</p>
+                    {% endif %}
+                {% else %}
+                    <p>Login to earn and see your prizes!</p>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
     <div id="right_half">
-        <p>This is some temp text, should be on the right hand side.</p>
-        <h1>Price: TEMP</h1>
+        {% if user.is_authenticated %}
+            <h4>Price: 20, currency: {{ user_currency }}</h4>
+        {% else %}
+            <h4>Price: 20</h4>
+        {% endif %}
         <div id="cr8-box-container">
-            <img class="centre" id="cr8-box" src="{% static 'images/cr8_cube.png' %}">
+            <img id="cr8-box" src="{% static 'images/cr8_cube.png' %}" alt="Image of a cr8.">
         </div>
+        <div id="openbtn">
+            <h5>
+                OPEN
+            </h5>
+        </div>
+
     </div>
     {#        <p>{{ UserProfile.user.username}}</p>#}
     {#        <img src={{ UserProfile.profileImage.url }}></img>#}

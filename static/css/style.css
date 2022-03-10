@@ -1,11 +1,12 @@
 /*colour palette*/
 /*#8d9dff purple blue*/
 /*#6575e4 deep blue*/
-/*#8de9ff deep magenta*/
+/*#6a2a88 deep magenta*/
 /*#c66ff1 magenta*/
 /*#8de9ff baby blue*/
 /*#40aaff blue*/
 /*#8ecdff light blue*/
+/*#4c555c light grey*/
 
 body {
     margin: 0;
@@ -15,6 +16,27 @@ body {
     font-family: "Arial Rounded MT Bold", sans-serif;
     color: white;
 }
+
+h4{
+    font-size: 34px;
+    color: #6a2a88;
+}
+h5{
+    font-size: 100px;
+}
+h2{
+    color: #c067ed;
+    font-size: 34px;
+    margin: 0;
+    padding:0;
+}
+
+h3{
+    font-size:28px;
+    margin:0;
+    padding:0;
+}
+
 
 .cr8-top-bar {
 
@@ -62,11 +84,10 @@ body {
     left: 0;
     right: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .cr8-bottom-bar a {
-    float: left;
     line-height: 30px;
     text-align: center;
     padding-left: 100px;
@@ -81,6 +102,8 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+
 /*index specific css*/
 
 #left_half {
@@ -101,4 +124,58 @@ body {
     background-position: center;
     background-size: cover;
     background-image: url('stacked-waves1.svg');
+
+
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-evenly;*/
+    align-items: center;
 }
+
+.infobox{
+    width: 80%;
+    margin: 30px;
+}
+
+.wrapper{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+
+}
+
+.infobox img{
+    height:230px;
+    width:auto;
+    padding: 20px;
+}
+
+.contentbox{
+    background-color: #4c555c;
+    margin: 5%;
+    box-shadow: #1c1e1f -10px 10px;
+    width:90%;
+}
+
+
+.left{
+    float:left;
+}
+
+.right{
+    float:right;
+}
+.bottom{
+    display:flex;
+    align-items: flex-end;
+
+}
+
+/*.wrapper{*/
+/*    !*float:left;*!*/
+/*}*/
+
+/*#right_half h1,h2{*/
+/*    position:relative;*/
+/*    text-align: center;*/
+/*}*/
