@@ -31,11 +31,6 @@ as it'll just duplicate lots of images
     if image_check == "s" or image_check == "S":
         add_images = False
 
-    for user in user_list:
-        profile_django_object = add_user(user)
-        if add_images:
-            add_image_user(profile_django_object, user)
-
     for prize in prize_list:
         prize_django_object = add_prize(prize)
         if add_images:
@@ -45,6 +40,12 @@ as it'll just duplicate lots of images
         achieve_django_object = add_achievement(achieve)
         if add_images:
             add_image_achievement(achieve_django_object, achieve)
+
+    for user in user_list:
+        profile_django_object = add_user(user)
+        add_prizes_to_user(profile_django_object, user)
+        if add_images:
+            add_image_user(profile_django_object, user)
 
 
 def add_user(user):
@@ -95,6 +96,16 @@ def add_image_achievement(achieve, achieve_data):
     filename = achieve_data["imagename"]
     dir = os.path.join(os.getcwd(), "tmp/achieve/" + filename)
     achieve.achievementImage.save(filename, File(open(dir, "rb")))
+
+
+def add_prizes_to_user(user, user_dict):
+    prizeList = user_dict["prizeList"]
+    for prize in prizeList:
+        print(prize)
+        prize_django_object = Prize.objects.get(prizeName=prize)
+        user.prizes.add(prize_django_object)
+        print(user, prize)
+    user.save()
 
 
 populate()
