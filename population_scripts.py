@@ -44,6 +44,7 @@ as it'll just duplicate lots of images
     for user in user_list:
         profile_django_object = add_user(user)
         add_prizes_to_user(profile_django_object, user)
+        add_achievements_to_user(profile_django_object, user)
         if add_images:
             add_image_user(profile_django_object, user)
 
@@ -100,11 +101,21 @@ def add_image_achievement(achieve, achieve_data):
 
 def add_prizes_to_user(user, user_dict):
     prizeList = user_dict["prizeList"]
+
     for prize in prizeList:
-        print(prize)
         prize_django_object = Prize.objects.get(prizeName=prize)
         user.prizes.add(prize_django_object)
-        print(user, prize)
+
+    user.save()
+
+
+def add_achievements_to_user(user, user_dict):
+    achieve_list = user_dict["achieveList"]
+
+    for achieve in achieve_list:
+        achieve_django_object = Achievement.objects.get(achievementName=achieve)
+        user.achievements.add(achieve_django_object)
+
     user.save()
 
 

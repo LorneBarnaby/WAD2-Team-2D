@@ -10,7 +10,7 @@ def create_pop_dict(key_list, value_list):
 
 
 def generate_user_lists():
-    key_list_users = ["username", "password", "currency", "prizeList"]
+    key_list_users = ["username", "password", "currency", "prizeList", "achieveList"]
     user_vals = [
         [
             "DSommerville",
@@ -23,14 +23,16 @@ def generate_user_lists():
                 "The Letter D",
                 "The Letter P",
             ],
+            ["Derek's Pipe", "Big Spender"],
         ],
         [
             "limbsw",
             "ExamplePassword 12 !",
             1600,
             ["Common Derek", "Pipe Derek", "Integer Overflow Error"],
+            ["Derek's Pipe"],
         ],
-        ["sharon", "ExamplePassword 12 !", 12, []],
+        ["sharon", "ExamplePassword 12 !", 12, [], []],
         [
             "JackKilpack",
             "ExamplePassword 12 !",
@@ -42,16 +44,24 @@ def generate_user_lists():
                 "The Letter P",
                 "The Letter H",
             ],
+            [],
         ],
         [
             "lbarnaby",
             "ExamplePassword 12 !",
             999999,
             ["The Letter Q", "The Letter Y", "Integer Overflow Error"],
+            ["Moneybags"],
         ],
-        ["bigpoppa", "ExamplePassword 12 !", 1780, ["The Letter H"]],
-        ["lilpoppa", "ExamplePassword 12 !", 10000, ["The Letter C", "The Letter C"]],
-        ["chara", "ExamplePassword 12 !", 420, ["Common Derek"]],
+        ["bigpoppa", "ExamplePassword 12 !", 1780, ["The Letter H"], []],
+        [
+            "lilpoppa",
+            "ExamplePassword 12 !",
+            10000,
+            ["The Letter C", "The Letter C"],
+            [],
+        ],
+        ["chara", "ExamplePassword 12 !", 420, ["Common Derek"], []],
     ]
 
     return [create_pop_dict(key_list_users, user_val) for user_val in user_vals]
