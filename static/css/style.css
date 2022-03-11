@@ -41,7 +41,6 @@ h3 {
 }
 
 
-
 .cr8-top-bar {
 
     background-color: #1c1e1f;
@@ -157,7 +156,8 @@ h3 {
     align-items: center;
 
 }
-.zoom{
+
+.zoom {
     transition: transform .2s;
 }
 
@@ -166,10 +166,11 @@ h3 {
     width: auto;
     padding: 20px;
 }
+
 .zoom:hover {
-  -ms-transform: scale(1.5);
-  -webkit-transform: scale(1.5);
-  transform: scale(2);
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    transform: scale(2);
 }
 
 .contentbox {
@@ -186,10 +187,10 @@ h3 {
     margin: 20px;
 }
 
-#prize_list img{
-    height:100px;
-    width:auto;
-    padding:5px;
+#prize_list img {
+    height: 100px;
+    width: auto;
+    padding: 5px;
 }
 
 
@@ -213,37 +214,37 @@ h3 {
 }
 
 
-
 /*leaderboard specific css*/
 
-.leaderboard-container{
+.leaderboard-container {
     display: flex;
     flex-direction: column;
 }
 
-.leaderboard-position{
+.leaderboard-position {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding:40px;
+    padding: 40px;
 }
 
-.leaderboard-position img{
-    height:auto;
-    width:200px;
-    padding:0;
+.leaderboard-position img {
+    height: auto;
+    width: 200px;
+    padding: 0;
 
     box-shadow: -10px 10px #c66ff1;
 }
 
-.leaderboard-position h5{
+.leaderboard-position h5 {
     font-size: 150px;
 }
 
-.leaderboard-position *{
+.leaderboard-position * {
     padding: 25px;
 }
-.blue{
+
+.blue {
     color: #8de9ff;
 }
 
@@ -257,10 +258,26 @@ h3 {
     z-index: 1;
 }
 
-.flash-bar{
-    width:100%;
+.flash-bar {
+    width: 100%;
     height: 150px;
     background-color: #c067ed;
     margin-top: 75px;
 }
+
+.form-container {
+    padding: 30px;
+}
+
+.form-container * {
+    margin: 10px;
+    font-size: 24px;
+}
+
+#submit-button {
+    background-color: #c067ed;
+    color: white;
+}
+
+
 
