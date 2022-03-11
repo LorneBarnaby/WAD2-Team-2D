@@ -8,20 +8,30 @@
 
 {% block body_block %}
 
-    <h1> Test Leaderboard Page </h1>
+    <h1 style="margin-left:5%"> Top Players </h1>
 
     {% if user.is_authenticated %}
         <div>
-            <p> (your position: {{ curr_position_in_leaderboard }} ) </p>
+            <p style="margin-left:5%"> (your position: {{ curr_position_in_leaderboard }} ) </p>
         </div>
     {% endif %}
-    <div>
-        <ol>
+    <div class="flash-bar behind"></div>
+    <div class="contentbox front" style="margin-top:0;">
+        <div class="leaderboard-container">
             {% for user_profile in user_profile_list %}
-            <li> {{ user_profile.user.username }} - currency: {{ user_profile.currency }}</li>
+                <div class="leaderboard-position">
+                    <h5>{{ forloop.counter }}</h5>
+                    <div>
+                        <img src="{{ user_profile.profileImage.url }}"
+                             alt="{{ user_profile.user.username }} Profile Image"/>
+                    </div>
+                    <h3 class="blue">{{ user_profile.user.username }}</h3>
+                    <h3>Currency: {{ user_profile.currency }}</h3>
+                </div>
             {% endfor %}
-        </ol>
+        </div>
     </div>
+
 
 {% endblock %}
 

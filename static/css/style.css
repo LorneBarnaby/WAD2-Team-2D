@@ -41,6 +41,7 @@ h3 {
 }
 
 
+
 .cr8-top-bar {
 
     background-color: #1c1e1f;
@@ -49,6 +50,7 @@ h3 {
     height: 80px;
     position: fixed;
     top: 0;
+    z-index: 3;
 }
 
 .cr8-top-bar a {
@@ -179,13 +181,9 @@ h3 {
 
 #prize_list {
     width: 40%;
-    /*min-height: 250px;*/
-    /*border: 1px solid #000;*/
     background-color: #2c2f32;
     display: inline-block;
     margin: 20px;
-
-
 }
 
 #prize_list img{
@@ -194,15 +192,6 @@ h3 {
     padding:5px;
 }
 
-/*#prize_list{*/
-/*    align-items: center;*/
-/*    columns: 2;*/
-/*}*/
-
-/*#prize_list img{*/
-/*    height:100px;*/
-/*    width:auto;*/
-/*}*/
 
 .left {
     float: left;
@@ -215,20 +204,63 @@ h3 {
 .bottom {
     display: flex;
     align-items: flex-end;
-
 }
 
 #cr8-box {
     max-width: 100%;
     height: auto;
-    width: auto \9;
+    width: auto;
 }
 
-/*.wrapper{*/
-/*    !*float:left;*!*/
-/*}*/
 
-/*#right_half h1,h2{*/
-/*    position:relative;*/
-/*    text-align: center;*/
-/*}*/
+
+/*leaderboard specific css*/
+
+.leaderboard-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.leaderboard-position{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding:40px;
+}
+
+.leaderboard-position img{
+    height:auto;
+    width:200px;
+    padding:0;
+
+    box-shadow: -10px 10px #c66ff1;
+}
+
+.leaderboard-position h5{
+    font-size: 150px;
+}
+
+.leaderboard-position *{
+    padding: 25px;
+}
+.blue{
+    color: #8de9ff;
+}
+
+.front {
+    position: absolute;
+    z-index: 2;
+}
+
+.behind {
+    position: fixed;
+    z-index: 1;
+}
+
+.flash-bar{
+    width:100%;
+    height: 150px;
+    background-color: #c067ed;
+    margin-top: 75px;
+}
+
