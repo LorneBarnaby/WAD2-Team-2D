@@ -89,6 +89,7 @@ h3 {
     right: 0;
     display: flex;
     justify-content: space-between;
+    z-index: 3;
 }
 
 .cr8-bottom-bar a {
