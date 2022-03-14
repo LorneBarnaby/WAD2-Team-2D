@@ -14,10 +14,22 @@
     <div class="body-l">
         <div class ="contentbox left">
             <div style="padding:10px">
-                <p> Q) What happens if my Lootbox doesn't open <br>
-                    A) Cry about it and get your money up</p>
-                <p> Q) How do I view my prizes <br>
-                    A) <a href="{% url 'cr8:login' %}">Login</a> or <a href="{% url 'cr8:sign_up' %}">Sign Up</a> and view your prizes and claim Achievements !!</p>
+                <button class="accordion">What happens if my CR8 doesn't open?</button>
+                    <div class="panel">
+                      <p>Check how much currency is in your wallet and
+                          If you have some prizes that your okay with parting
+                          then sell those prizes to get more funds to find those Ultra Rare CR8's</p>
+                    </div>
+
+                    <button class="accordion"> How do I view my prizes</button>
+                    <div class="panel">
+                      <p> <a href="{% url 'cr8:login' %}">Login</a> or <a href="{% url 'cr8:sign_up' %}">Sign Up</a> and view your prizes and claim Achievements !!</p>
+                    </div>
+
+                    <button class="accordion">What am i supposed to do with my prizes and currency?</button>
+                    <div class="panel">
+                      <p><a href="{% url 'cr8:leaderboard'%}"> Leaderboard</a></p>
+                    </div>
             </div>
         </div>
     </div>
