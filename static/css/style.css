@@ -15,6 +15,14 @@ body {
     background-color: #2c2f32;
     font-family: "Arial Rounded MT Bold", sans-serif;
     color: white;
+
+}
+
+a:visited {
+  color: #8de9ff;
+}
+a{
+    color: #8de9ff;
 }
 
 h4 {
@@ -275,7 +283,7 @@ h3 {
     font-size: 24px;
 }
 
-#submit-button {
+.submit-button {
     background-color: #c067ed;
     color: white;
 }

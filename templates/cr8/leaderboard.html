@@ -22,10 +22,14 @@
                 <div class="leaderboard-position">
                     <h5>{{ forloop.counter }}</h5>
                     <div>
-                        <img class = "zoom" src="{{ user_profile.profileImage.url }}"
-                             alt="{{ user_profile.user.username }} Profile Image"/>
+                        <a href="{% url 'cr8:profile' user_profile.username_slug %}">
+                            <img class = "zoom" src="{{ user_profile.profileImage.url }}"
+                                alt="{{ user_profile.user.username }} Profile Image"/>
+                        </a>
                     </div>
-                    <h3 class="blue">{{ user_profile.user.username }}</h3>
+                    <h3 class="blue">
+                        <a href="{% url 'cr8:profile' user_profile.username_slug %}">{{ user_profile.user.username }}</a>
+                    </h3>
                     <h3>Currency: {{ user_profile.currency }}</h3>
                 </div>
             {% endfor %}
