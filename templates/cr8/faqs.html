@@ -1,7 +1,6 @@
 {% extends 'cr8/base.html' %}
 {% load staticfiles %}
 
-
 {% block title_block %}
     FAQs
 {% endblock %}
@@ -10,30 +9,42 @@
 <div>
     <h1> Welcome to FAQs</h1>
 </div>
-<div data-col="" data-span="3" style="--span: 3; --start: 2;" class="Contact_text__1VDwj">
-    <div class="body-l">
-        <div class ="contentbox left">
-            <div style="padding:10px">
+
                 <button class="accordion">What happens if my CR8 doesn't open?</button>
-                    <div class="panel">
+                    <div class="panelz">
                       <p>Check how much currency is in your wallet and
                           If you have some prizes that your okay with parting
                           then sell those prizes to get more funds to find those Ultra Rare CR8's</p>
                     </div>
 
                     <button class="accordion"> How do I view my prizes</button>
-                    <div class="panel">
+                    <div class="panelz">
+                        <div style="padding=10px">
                       <p> <a href="{% url 'cr8:login' %}">Login</a> or <a href="{% url 'cr8:sign_up' %}">Sign Up</a> and view your prizes and claim Achievements !!</p>
+                            </div>
                     </div>
 
                     <button class="accordion">What am I supposed to do with my prizes and currency?</button>
-                    <div class="panel">
+                    <div class="panelz">
                       <p>You can check the <a href="{% url 'cr8:leaderboard'%}"> Leaderboard</a> to beat your friends!!!</p>
                     </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
+<script>var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}</script>
 
 
 {% endblock %}
