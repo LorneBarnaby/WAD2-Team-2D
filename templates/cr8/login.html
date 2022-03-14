@@ -13,10 +13,10 @@
                 {% csrf_token %}
                 Username: <input type="text" name="username" value="" size="50"/>
                 <br/>
-                Password: <input type="password" name="password" value="" size="50"/><input type="submit" value="submit" id="submit-button"/>
+                Password: <input type="password" name="password" value="" size="50"/><input type="submit" value="submit" class="submit-button"/>
                 <br/>
                 <br/>
-                <p style="margin-left:0;">Don't have an account? <a href="{% url 'cr8:sign_up' %}" id="signupbtn">Sign Up</a></p>
+                <p style="margin-left:0;">Don't have an account? <a href="{% url 'cr8:sign_up' %}" id="signupbtn" >Sign Up</a></p>
             </form>
         </div>
     </div>

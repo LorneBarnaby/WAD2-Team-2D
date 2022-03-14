@@ -1,4 +1,3 @@
-
 {% extends 'cr8/base.html' %}
 {% load staticfiles %}
 
@@ -6,18 +5,22 @@
     Sign UP
 {% endblock %}
 {% block body_block %}
-    <h1>Sign Up for CR8</h1>
-    {% if registered %}
-        the CR8 Team says: <strong>thank you for your patronage!</strong>
-        <a href="{% url 'cr8:index' %}">Return to the homepage.</a><br/>
-    {% else %}
-        <strong>Sign Up Here!</strong><br/>
-        <form id="user_form" method="post" action="{% url 'cr8:sign_up' %}" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            <!-- Provide a button to click to submit the form. -->
-            <input type="submit" name="submit" value="Sign Up"/>
-        </form>
-    {% endif %}
+    <h1 style="margin-left:5%">Sign Up</h1>
+    <div class="flash-bar behind"></div>
+    <div class="contentbox front" style="margin-top:0;">
+        <div class="form-container">
+            {% if registered %}
+                The CR8 Team says: <strong>Thank you for your patronage!</strong>
+                <a href="{% url 'cr8:index' %}">Return to the homepage.</a><br/>
+            {% else %}
+                <form id="user_form" method="post" action="{% url 'cr8:sign_up' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+                    {{ profile_form.as_p }}
+                    <!-- Provide a button to click to submit the form. -->
+                    <input type="submit" class="submit-button" name="submit" value="Sign Up"/>
+                </form>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
