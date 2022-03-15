@@ -12,5 +12,6 @@ urlpatterns = [
     path('contact_us/', views.contact_us, name='contact_us'),
     path('faqs/', views.faqs, name='faqs'),
     path('login/',views.user_login,name='login'),
-    path('logout/',views.user_logout, name='logout')
+    path('logout/',views.user_logout, name='logout'),
+    path('generate_prizes/', views.generate_prizes, name='generate_prizes')
 ]
