@@ -8,20 +8,21 @@ class Prize(models.Model):
     prizeName = models.CharField(max_length=30, blank=True, unique=True)
     prizeImage = models.ImageField(upload_to="prize_images", blank=True)
     prizeValue = models.IntegerField(default=0)
-    prizeRarity = models.CharField(max_length=30, blank=True, choices=RARITY.model_choices())
+    prizeRarity = models.CharField(
+        max_length=30, blank=True, choices=RARITY.model_choices()
+    )
 
     def __str__(self):
         return self.prizeName
 
 
+# achievement types can PRESENTLY be following strings "currency", "special", "collection", "number"
 class Achievement(models.Model):
     achievementName = models.CharField(max_length=30, blank=True)
     achievementDescription = models.CharField(max_length=256, blank=True)
     achievementImage = models.ImageField(upload_to="achievement_images", blank=True)
-
-    # Commented out until population script is updated to populate these fields
-    #achievementType = models.CharField(max_length=10)
-    #achievementCriteriaExpectedVal = models.IntegerField(default=0)
+    achievementType = models.CharField(max_length=10, default="currency")
+    achievementCriteriaExpectedVal = models.IntegerField(default=0)
 
     def __str__(self):
         return self.achievementName

@@ -23,14 +23,14 @@ def generate_user_lists():
                 "The Letter D",
                 "The Letter P",
             ],
-            ["Derek's Pipe", "Big Spender"],
+            ["have little money", "Impressive Wallet"],
         ],
         [
             "limbsw",
             "ExamplePassword 12 !",
             1600,
             ["Common Derek", "Pipe Derek", "Integer Overflow Error"],
-            ["Derek's Pipe"],
+            ["have little money"],
         ],
         ["sharon", "ExamplePassword 12 !", 12, [], []],
         [
@@ -89,11 +89,29 @@ def generate_prize_lists():
 
 
 def generate_achievement_lists():
-    key_list_achivements = ["name", "description", "imagename"]
+    key_list_achivements = ["name", "description", "imagename", "type", "requirements"]
     achievement_vals = [
-        ["Derek's Pipe", "You found the pipe!", "1.jpg"],
-        ["Big Spender", "Spent over n whatever currency we're using", "2.jpg"],
-        ["Moneybags", "Have over n currency blah blah blah", "3.jpg"],
+        [
+            "have little money",
+            "well done you have little money",
+            "1.jpg",
+            "currency",
+            500,
+        ],
+        [
+            "Impressive Wallet",
+            "smaller currency having achievement",
+            "2.jpg",
+            "currency",
+            1000,
+        ],
+        [
+            "Moneybags",
+            "the bigger currency having achievement",
+            "3.jpeg",
+            "currency",
+            10000,
+        ],
     ]
 
     return [

@@ -73,6 +73,8 @@ def add_achievement(achieve):
     achievement_name = achieve["name"]
     a = Achievement.objects.get_or_create(achievementName=achievement_name)[0]
     a.achievementDescription = achieve["description"]
+    a.achievementType = achieve["type"]
+    a.achievementCriteriaExpectedVal = achieve["requirements"]
     a.save()
     return a
 
