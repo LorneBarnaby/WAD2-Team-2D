@@ -82,8 +82,12 @@ def sign_up(request):
             profile.save()
 
             registered = True
+
+            login(request, user)
+            return redirect(reverse('cr8:index'))
         else:
             print(user_form.errors, profile_form.errors)
+
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
@@ -217,4 +221,3 @@ def check_achievement_criteria(user_profile, type, expected_val):
     # Other achievement types can be added here in the same way
 
     return False
-
