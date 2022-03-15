@@ -6,6 +6,8 @@ $(document).ready(function() {
 			function(data) {
 				
 				var prize = JSON.parse(data);
+
+				// $('#cr8-box-container')
 				
 				$('#prizeName').html(prize.prizeName);
 				$('#prizeImage').attr("src", prize.prizeImg);

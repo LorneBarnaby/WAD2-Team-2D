@@ -72,6 +72,8 @@
             <h4>Price: 20</h4>
             <div id="cr8-box-container">
                 <img id="cr8-box" src="{% static 'images/cr8_cube.png' %}" alt="Image of a cr8.">
+{#                <img id="prizeImage" src="">#}
+{#                <strong id="prizeName"></strong>#}
             </div>
 
             <div>
@@ -87,7 +89,7 @@
             </div>
 
             {% if user.is_authenticated %}
-                <h4>Currency: {{ user_currency }}</h4>
+                <h4 id="currency">Currency: {{ user_currency }}</h4>
             {% else %}
                 <h4>Login to see your currency</h4>
             {% endif %}

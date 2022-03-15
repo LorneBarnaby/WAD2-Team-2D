@@ -145,8 +145,8 @@ h3 {
 }
 
 #right_half_container {
-    height: 500px;
-    width: 700px;
+    /*height: 20%;*/
+    /*width: auto;*/
 
     display: flex;
     flex-direction: column;
@@ -202,6 +202,13 @@ h3 {
     padding: 5px;
 }
 
+#openbtn{
+    font-size: 30px;
+    color: white;
+    font-family: "Arial Rounded MT Bold", sans-serif;
+    background-color: transparent;
+    border: none;
+}
 
 .left {
     float: left;
@@ -216,11 +223,21 @@ h3 {
     align-items: flex-end;
 }
 
-#cr8-box {
+#cr8-box-container img {
     max-width: 100%;
     height: auto;
     width: auto;
 }
+
+#cr8-box-container{
+    height: 250px;
+    width: 250px;
+}
+
+/*#prizeImage{*/
+/*    height: 250px;*/
+/*    width: 250px;*/
+/*}*/
 
 
 /*leaderboard specific css*/
