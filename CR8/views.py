@@ -160,3 +160,16 @@ def user_logout(request):
     logout(request)
     # Take the user back to the homepage.
     return redirect(reverse('cr8:index'))
+
+# HELPER FUNCTIONS
+
+# Checks if the criteria for the achievement of a given type has been met, if so return true else return false
+def check_achievement_criteria(user_profile, type, expected_val):
+
+    if type == "currency" and user_profile.currency == expected_val:
+        return True
+
+    # Other achievement types can be added here in the same way
+
+    return False
+
