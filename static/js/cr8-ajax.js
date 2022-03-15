@@ -10,7 +10,7 @@ $(document).ready(function() {
 				
 				$('#prizeName').html(prize.prizeName);
 				$('#prizeImage').attr("src", prize.prizeImg).attr("style", "height:250px; width:auto");
-				$('#openbtn').hide();
+				$('#openbtntext').html("RE-ROLL");
 				$('#currency').html("Currency: "+updated_currency);
 				
 			})
