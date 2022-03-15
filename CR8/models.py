@@ -19,6 +19,10 @@ class Achievement(models.Model):
     achievementDescription = models.CharField(max_length=256, blank=True)
     achievementImage = models.ImageField(upload_to="achievement_images", blank=True)
 
+    # Commented out until population script is updated to populate these fields
+    #achievementType = models.CharField(max_length=10)
+    #achievementCriteriaExpectedVal = models.IntegerField(default=0)
+
     def __str__(self):
         return self.achievementName
 
