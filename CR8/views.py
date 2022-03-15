@@ -159,6 +159,7 @@ def claim_achievement(request, achievementName):
         achievement_criteria_is_met = False
 
     if achievement_criteria_is_met:
+        user_profile.achievements.add(achievement)
         #AJAX JSON RESPONSE GOES HERE
         pass
     else:
