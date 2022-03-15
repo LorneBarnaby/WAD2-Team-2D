@@ -73,11 +73,19 @@
             <div id="cr8-box-container">
                 <img id="cr8-box" src="{% static 'images/cr8_cube.png' %}" alt="Image of a cr8.">
             </div>
-            <div id="openbtn">
-                <h5>
-                    OPEN
-                </h5>
+
+            <div>
+                <strong id="prizeName"></strong>
+                <img id="prizeImage" src="">
+                {% if user.is_authenticated %}
+                <button id="openbtn"
+                        class="btn btn-primary btn-sm"
+                        type="button">
+                    <h5> OPEN </h5>
+                </button>
+                {% endif %}
             </div>
+
             {% if user.is_authenticated %}
                 <h4>Currency: {{ user_currency }}</h4>
             {% else %}
