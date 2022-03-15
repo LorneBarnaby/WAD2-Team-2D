@@ -40,11 +40,16 @@ def generate_prizes(request):
     chosen_rarity = choices([str(r) for r in RARITY], [r.rarity for r in RARITY])
     items = Prize.objects.filter(prizeRarity=chosen_rarity[0]).all()
     chosen = items[randint(0,items.count()-1)]
-    values = { "prizeName": chosen.prizeName,"prizeRarity":chosen.prizeRarity,
-               "prizeValue": chosen.prizeValue,"prizeImg": chosen.prizeImage.url}
+
     user_profile = UserProfile.objects.get(user__username=request.user)
+    user_profile.currency -= 20
     user_profile.prizes.add(chosen)
     user_profile.save()
+
+    values = {"prizeName": chosen.prizeName,"prizeRarity":chosen.prizeRarity,
+               "prizeValue": chosen.prizeValue,"prizeImg": chosen.prizeImage.url,
+               "updated_currency":user_profile.currency}
+
     return HttpResponse(json.dumps(values))
 
 
