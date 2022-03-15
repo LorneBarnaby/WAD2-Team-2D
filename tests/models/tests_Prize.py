@@ -23,3 +23,4 @@ class UserProfileTest(TestCase):
         self.prize.prizeRarity = str(RARITY.COMMON)
         self.prize.save()
         self.assertEqual(str(RARITY.COMMON), Prize.objects.get(id=self.prize.id).prizeRarity)
+

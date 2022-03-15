@@ -30,7 +30,7 @@ class UserProfileTest(TestCase):
             self.profile.prizes.add(p)
         self.assertEqual(2, self.profile.prizes.count())
 
-    def test_give_currenct(self):
+    def test_give_currency(self):
         self.profile.currency += 100
         self.profile.save()
-        self.assertEqual(200,UserProfile.objects.get(id=self.profile.id).currency)
+        self.assertEqual(200, UserProfile.objects.get(id=self.profile.id).currency)
