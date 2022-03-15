@@ -1,5 +1,5 @@
 $(document).ready(function () {
     $("#openbtn").click(function () {
-        $("#cr8-box-container").toggle("explode");
+        $("#cr8-box-container").hide("explode");
     });
 });

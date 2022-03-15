@@ -54,8 +54,8 @@
                         {% for prize in user_prize_list %}
                             <li id="prize_list">
                                 <div>{{ prize.prizeName }}</div>
-                                <div>Value: {{  prize.prizeValue }}</div>
-                            <img class="zoom" src="{{ prize.prizeImage.url }}" alt="Prize image"></li>
+                                <div>Value: {{ prize.prizeValue }}</div>
+                                <img class="zoom" src="{{ prize.prizeImage.url }}" alt="Prize image"></li>
                         {% endfor %}
                     {% else %}
                         <p>Start buying cr8's to earn prizes!</p>
@@ -74,17 +74,19 @@
                 <img id="cr8-box" src="{% static 'images/cr8_cube.png' %}" alt="Image of a cr8.">
             </div>
 
-            <div>
-                <strong id="prizeName"></strong>
-                <img id="prizeImage" src="">
-                {% if user.is_authenticated %}
+
+            <strong id="prizeName"></strong>
+            <br/>
+            <img id="prizeImage" src="">
+            <br/>
+            {% if user.is_authenticated %}
                 <button id="openbtn"
                         class="btn btn-primary btn-sm"
                         type="button">
-                    <h5> OPEN </h5>
+                    <h5 id="openbtntext"> OPEN </h5>
                 </button>
-                {% endif %}
-            </div>
+            {% endif %}
+
 
             {% if user.is_authenticated %}
                 <h4 id="currency">Currency: {{ user_currency }}</h4>
