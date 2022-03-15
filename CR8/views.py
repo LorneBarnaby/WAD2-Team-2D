@@ -42,13 +42,20 @@ def generate_prizes(request):
     chosen = items[randint(0,items.count()-1)]
 
     user_profile = UserProfile.objects.get(user__username=request.user)
-    user_profile.currency -= 20
-    user_profile.prizes.add(chosen)
-    user_profile.save()
 
-    values = {"prizeName": chosen.prizeName,"prizeRarity":chosen.prizeRarity,
-               "prizeValue": chosen.prizeValue,"prizeImg": chosen.prizeImage.url,
-               "updated_currency":user_profile.currency}
+    if user_profile.currency >=20:
+
+        user_profile.currency -= 20
+        user_profile.prizes.add(chosen)
+        user_profile.save()
+        values = {"prizeName": chosen.prizeName,"prizeRarity":chosen.prizeRarity,
+                "prizeValue": chosen.prizeValue,"prizeImg": chosen.prizeImage.url,
+                "updated_currency":user_profile.currency}
+
+    else:
+
+        values = {"prizeName": "Not enough currency!","prizeImg":"",
+                "updated_currency":user_profile.currency}
 
     return HttpResponse(json.dumps(values))
 
