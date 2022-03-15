@@ -7,10 +7,9 @@ $(document).ready(function() {
 				
 				var prize = JSON.parse(data);
 
-				// $('#cr8-box-container')
 				
 				$('#prizeName').html(prize.prizeName);
-				$('#prizeImage').attr("src", prize.prizeImg);
+				$('#prizeImage').attr("src", prize.prizeImg).attr("style", "height:250px; width:auto");
 				$('#openbtn').hide();
 				$('#currency').html("Currency: "+updated_currency);
 				
