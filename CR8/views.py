@@ -197,8 +197,7 @@ def user_login(request):
             else:
                 return HttpResponse("Your account is disabled.")
         else:
-            print(f"Invalid login details: {username}")
-            return HttpResponse("Invalid login details supplied.")
+            return redirect(reverse('cr8:login'))
     else:
         return render(request, 'cr8/login.html')
 
