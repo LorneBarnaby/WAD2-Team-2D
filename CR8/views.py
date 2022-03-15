@@ -132,6 +132,39 @@ def profile(request,username_slug):
 
     return render(request, 'cr8/profile.html', context=context_dict)
 
+@login_required
+def claim_achievement(request, achievementName):
+
+    context_dict = {}
+
+    try:
+        user_profile = UserProfile.objects.get(user__username=request.user)
+        achievement = Achievement.objects.get(achievementName=achievementName)
+
+        context_dict['user_profile'] = user_profile
+        context_dict['achievement'] = achievement
+
+    except UserProfile.DoesNotExist:
+        user_profile = None
+        context_dict['user_profile'] = None
+
+    except Achievement.DoesNotExist:
+        achievement = None
+        context_dict['achievement'] = None
+
+    if user_profile and achievement:
+        # Calls helper function to check achievement criteria is met by the current user
+        achievement_criteria_is_met = check_achievement_criteria(user_profile, achievement.type, achievement.achievementCriteriaExpectedVal)
+    else:
+        achievement_criteria_is_met = False
+
+    if achievement_criteria_is_met:
+        #AJAX JSON RESPONSE GOES HERE
+        pass
+    else:
+        #AJAX JSON RESPONSE GOES HERE
+        pass
+
 def user_login(request):
     if request.method == 'POST':
 
