@@ -9,30 +9,60 @@
 {% block body_block %}
 
     {% if user_profile %}
-        <h1> Test Profile Page </h1>
-        <div>
+        <div class="profile-container">
+            <div class="column profile-info">
+                <img class="profile-image zoom" src="{{ user_profile.profileImage.url }}"
+                     alt="{{ user_profile.user.username }} Profile Image"/>
+                <div class="contentbox">
+                    {{ user_profile.user.username }}
+                </div>
+                <div class="contentbox">
+                    {{ user_currency }}
+                </div>
+                <div class="contentbox">
+                    edit profile?
+                </div>
 
-            <p> This is {{ user_profile.user.username }}'s profile </p>
-            <img src={{ user_profile.profileImage.url }}></img>
+            </div>
+
+            <div class="profile-stock column">
+                <div class="profile-achievements contentbox">
+                    {% if user_prize_list %}
+                        {% for achievement in user_achievement_list %}
+                            <div class="achievement-container wrapper">
+                                {#                            this is busted. how to get achievement images?#}
+                                {#                                temporary image used instead#}
+                                {#                                i think the view needs to change#}
+                                <img class="zoom" src="{% static 'images/cr8_cube.png' %}" alt="achievement image">
+                                <div>
+                                    <p>TEMP NAME</p>
+                                    <p>TEMP DESCRIPTION</p>
+                                </div>
+                                <button>CLAIM</button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="profile-inventory contentbox">
+                    {% if user_prize_list %}
+                        {% for prize in user_prize_list %}
+                            <li class="prize_list">
+                                <div>{{ prize.prizeName }}</div>
+                                <div>Value: {{ prize.prizeValue }}</div>
+                                <img id="{{ prize.prizeName }}" class="zoom sellable" src="{{ prize.prizeImage.url }}"
+                                     alt="Prize image"></li>
+                        {% endfor %}
+                    {% else %}
+                        <p>This user has no prizes :(</p>
+                    {% endif %}
+                </div>
+            </div>
 
         </div>
 
-        <div>
-        {% if user_prize_list %}
-            <ul>
-                {% for prize in user_prize_list %}
-                <li> {{ prize.prizeName }} </li>
-                {% endfor %}
-            </ul>
-
-        {% endif %}
-        </div>
     {% else %}
-        <div>
-            <p> <strong> The specified user does not exist. </strong> </p>
-        </div>
+        <p><strong> The specified user does not exist. </strong></p>
     {% endif %}
-
 
 
 {% endblock %}

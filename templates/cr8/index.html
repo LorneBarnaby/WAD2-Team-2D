@@ -52,7 +52,7 @@
                 {% if user.is_authenticated %}
                     {% if user_prize_list %}
                         {% for prize in user_prize_list %}
-                            <li id="prize_list">
+                            <li class="prize_list">
                                 <div>{{ prize.prizeName }}</div>
                                 <div>Value: {{ prize.prizeValue }}</div>
                                 <img class="zoom" src="{{ prize.prizeImage.url }}" alt="Prize image"></li>

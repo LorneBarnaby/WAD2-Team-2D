@@ -135,15 +135,18 @@ def profile(request,username_slug):
         user_profile = UserProfile.objects.get(username_slug=username_slug)
         user_prize_list = Prize.objects.filter(userprofile=user_profile)
         user_achievement_list = Achievement.objects.filter(userprofile=user_profile)
+        user_currency = user_profile.currency
 
         context_dict['user_profile'] = user_profile
         context_dict['user_prize_list'] = user_prize_list
         context_dict['user_achievement_list'] = user_achievement_list
+        context_dict['user_currency'] = user_currency
 
     except UserProfile.DoesNotExist:
         context_dict['user_profile'] = None
         context_dict['user_prize_list'] = None
         context_dict['user_achievement_list'] = None
+        context_dict['user_currency'] = None
 
     return render(request, 'cr8/profile.html', context=context_dict)
 

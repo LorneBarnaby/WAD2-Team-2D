@@ -16,3 +16,8 @@ $(document).ready(function() {
 			})
 	});
 });
+
+// stub function for selling prizes
+$('.sellable').click(function(){
+    alert(this.id);
+});

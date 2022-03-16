@@ -171,11 +171,19 @@ h3 {
 }
 
 .infobox img {
-    height: 230px;
+    height: 80px;
     width: auto;
     padding: 20px;
 }
 
+
+@media only screen and (min-width: 1000px) {
+  .infobox img {
+      height: 230px;
+    width: auto;
+    padding: 20px;
+  }
+}
 .zoom:hover {
     -ms-transform: scale(1.5);
     -webkit-transform: scale(1.5);
@@ -189,14 +197,17 @@ h3 {
     width: 90%;
 }
 
-#prize_list {
+.prize_list {
     width: 40%;
     background-color: #2c2f32;
     display: inline-block;
     margin: 20px;
 }
+.prize_list *{
+    padding:10px;
+}
 
-#prize_list img {
+.prize_list img {
     height: 100px;
     width: auto;
     padding: 5px;
@@ -337,6 +348,59 @@ h3 {
 .active:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
+
+
+.column{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.profile-image {
+    height: auto;
+    width: 60%;
+    padding: 0;
+    margin-top:5%;
+
+    box-shadow: -10px 10px #c66ff1;
+}
+.profile-container{
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+}
+
+.profile-info{
+    width:30%;
+}
+.profile-info div{
+    width:60%;
+    padding:20px;
+}
+.profile-stock{
+    width: 100%;
+}
+.profile-stock div{
+    margin-left:0;
+    margin-bottom: 0;
+}
+
+.profile-achievements{
+    display:flex;
+    justify-content: space-between;
+}
+.profile-achievements img{
+    width:30%;
+    height:auto;
+}
+
+.achievement-container{
+    padding:5px;
+}
+
+
+
 
 
 
