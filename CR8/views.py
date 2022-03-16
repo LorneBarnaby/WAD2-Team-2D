@@ -82,8 +82,12 @@ def sign_up(request):
             profile.save()
 
             registered = True
+
+            login(request, user)
+            return redirect(reverse('cr8:index'))
         else:
             print(user_form.errors, profile_form.errors)
+
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
@@ -193,8 +197,7 @@ def user_login(request):
             else:
                 return HttpResponse("Your account is disabled.")
         else:
-            print(f"Invalid login details: {username}")
-            return HttpResponse("Invalid login details supplied.")
+            return redirect(reverse('cr8:login'))
     else:
         return render(request, 'cr8/login.html')
 
@@ -217,4 +220,3 @@ def check_achievement_criteria(user_profile, type, expected_val):
     # Other achievement types can be added here in the same way
 
     return False
-
