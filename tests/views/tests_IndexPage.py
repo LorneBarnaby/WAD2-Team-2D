@@ -57,5 +57,10 @@ class IndexPageTest(TestCase):
         self.assertContains(response, 'Login to earn and see your prizes!')
 
     def test_html_login(self):
+        self.client.post(reverse('cr8:login'), {'username': self.testCaseUserName, 'password': self.testCasePass},
+                         follow=True)
+        response = self.client.get(reverse('cr8:index'))
+        self.assertNotContains(response, 'Login to see your currency')
+        self.assertNotContains(response, 'Login to earn and see your prizes!')
 
-        pass
+
