@@ -18,7 +18,7 @@
     <div class="flash-bar behind"></div>
     <div class="contentbox front" style="margin-top:0;">
         <div class="leaderboard-container">
-            {% for user_profile in user_profile_list %}
+            {% for user_profile in user_profile_list|slice:":10"  %}
                 <div class="leaderboard-position">
                     <h5>{{ forloop.counter }}</h5>
                     <div>
@@ -36,4 +36,3 @@
         </div>
     </div>
 {% endblock %}
-
