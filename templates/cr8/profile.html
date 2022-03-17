@@ -27,16 +27,30 @@
 
             <div class="profile-stock column">
                 <div class="profile-achievements contentbox">
-                    {% if user_prize_list %}
+                    {% if user_achievement_list %}
                         {% for achievement in user_achievement_list %}
                             <div class="achievement-container wrapper">
                                 {#                            this is busted. how to get achievement images?#}
                                 {#                                temporary image used instead#}
                                 {#                                i think the view needs to change#}
-                                <img class="zoom" src="{% static 'images/cr8_cube.png' %}" alt="achievement image">
+                                <img class="zoom" src="{{ achievement.achievementImage.url }}" alt="achievement image">
                                 <div>
-                                    <p>TEMP NAME</p>
-                                    <p>TEMP DESCRIPTION</p>
+                                    <p>{{ achievement.achievementName }}</p>
+                                    <p> {{ achievement.achievementDescription }}</p>
+                                </div>
+                                <button>CLAIM</button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="profile-achievements contentbox">
+                    {% if unclaimed_achievement_list %}
+                        {% for achievement in unclaimed_achievement_list %}
+                            <div class="achievement-container wrapper">
+                                <img class="zoom" src="{{ achievement.achievementImage.url }}" alt="achievement image">
+                                <div>
+                                    <p>{{ achievement.achievementName }}</p>
+                                    <p> {{ achievement.achievementDescription }}</p>
                                 </div>
                                 <button>CLAIM</button>
                             </div>
