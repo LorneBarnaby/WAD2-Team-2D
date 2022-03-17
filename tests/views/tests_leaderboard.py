@@ -8,12 +8,13 @@ class LeaderboardTests(TestCase):
     lorne = ""
 
     def setUp(self):
-        u1 = User(username="LorneBarnaby")
-        u1.save()
-        u1.set_password("Fake Password 19.8")
-        lorne = UserProfile(user=u1)
-        lorne.currency = 4000
-        lorne.save()
+        pass
+        # u1 = User(username="LorneBarnaby")
+        # u1.save()
+        # u1.set_password("Fake Password 19.8")
+        # lorne = UserProfile(user=u1)
+        # lorne.currency = 4000
+        # lorne.save()
 
     def test_response(self):
         response = self.client.get(reverse("cr8:leaderboard"))
