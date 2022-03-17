@@ -65,6 +65,7 @@
                 <div class="profile-inventory contentbox">
                     {% if user_prize_list %}
                         {% for prize in user_prize_list %}
+                            <div id="{{ prize.id }}">
                             <li class="prize_list">
                                 <div>{{ prize.prizeName }}</div>
                                 <div>Value: {{ prize.prizeValue }}</div>
@@ -77,6 +78,7 @@
                                         <h6 class="sellbtntexts"> SELL </h6>
                                 </button>
                             {% endif %}
+                            </div>
                         {% endfor %}
                     {% else %}
                         <p>This user has no prizes :(</p>

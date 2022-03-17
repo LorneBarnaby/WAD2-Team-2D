@@ -60,7 +60,7 @@ $(document).ready(function() {
 				
 				var prize = JSON.parse(data);
 				
-				var claimButtons
+				var claimButtons;
 				claimButtons = document.getElementsByClassName("sellbtns");
 				
 				for (var i=0; i<claimButtons.length;i++) {
@@ -69,7 +69,9 @@ $(document).ready(function() {
 						}
 				}
 			
-				$('#usercurrency').html(prize.updated_currency);
+			
+			$('#' + prizeIdVar).hide();
+			
 				
 			});
 			
