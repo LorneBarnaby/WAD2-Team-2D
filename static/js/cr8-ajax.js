@@ -44,6 +44,36 @@ $(document).ready(function() {
 				
 				
 			});
+			
+			
+	});
+	
+	$('.sellbtns').click(function() {
+		
+		var prizeIdVar;
+		prizeIdVar = $(this).attr('data-prizeid');
+		
+		
+		$.get('/cr8/sell_prize/',
+			{'prize_id':prizeIdVar},
+			function(data) {
+				
+				var prize = JSON.parse(data);
+				
+				var claimButtons
+				claimButtons = document.getElementsByClassName("sellbtns");
+				
+				for (var i=0; i<claimButtons.length;i++) {
+						if (claimButtons[i].getAttribute('data-prizeid') == prizeIdVar) {
+							claimButtons[i].innerHTML = "Sold for " + prize.prizeValue;
+						}
+				}
+
+				
+				
+			});
+			
+			
 	});
 	
 	
