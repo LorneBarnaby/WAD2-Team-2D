@@ -68,8 +68,8 @@ $(document).ready(function() {
 							claimButtons[i].innerHTML = "Sold for " + prize.prizeValue;
 						}
 				}
-
-				
+			
+				$('#usercurrency').html(prize.updated_currency);
 				
 			});
 			

@@ -186,6 +186,31 @@ def claim_achievement(request):
         json_dict['criteriaIsMet'] = "False"
         return HttpResponse(json.dumps(json_dict))
 
+@login_required
+def sell_prize(request):
+
+    prize_id = request.GET['prize_id']
+    json_dict = {}
+
+    try:
+        user_profile = UserProfile.objects.get(user__username=request.user)
+        prize = Prize.objects.get(id=prize_id)
+        json_dict['prizeValue'] = prize.prizeValue
+
+    except UserProfile.DoesNotExist:
+        user_profile = None
+
+    except Prize.DoesNotExist:
+        prize = None
+
+    if user_profile and prize:
+        user_profile.prizes.remove(prize)
+        user_profile.currency += prize.prizeValue
+        user_profile.save()
+        json_dict['updated_currency'] = user_profile.currency
+
+    return HttpResponse(json.dumps(json_dict))
+
 def user_login(request):
     if request.method == 'POST':
 
