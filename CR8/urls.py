@@ -13,5 +13,6 @@ urlpatterns = [
     path('faqs/', views.faqs, name='faqs'),
     path('login/',views.user_login,name='login'),
     path('logout/',views.user_logout, name='logout'),
-    path('generate_prizes/', views.generate_prizes, name='generate_prizes')
+    path('generate_prizes/', views.generate_prizes, name='generate_prizes'),
+    path('claim_achievement/', views.claim_achievement, name='claim_achievement')
 ]
