@@ -70,6 +70,13 @@
                                 <div>Value: {{ prize.prizeValue }}</div>
                                 <img id="{{ prize.prizeName }}" class="zoom sellable" src="{{ prize.prizeImage.url }}"
                                      alt="Prize image"></li>
+                            {% if is_current_user %}
+                                <button class="sellbtns"
+                                        data-prizeid="{{ prize.id }}"
+                                        type="button">
+                                        <h6 class="sellbtntexts"> SELL </h6>
+                                </button>
+                            {% endif %}
                         {% endfor %}
                     {% else %}
                         <p>This user has no prizes :(</p>
