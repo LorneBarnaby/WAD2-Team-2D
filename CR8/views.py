@@ -126,7 +126,7 @@ def profile(request,username_slug):
 
     context_dict = {}
 
-    if request.user.is_authenticated and request.user.username == username_slug:
+    if request.user.is_authenticated and request.user.username == UserProfile.objects.get(username_slug=username_slug).user.username:
         context_dict['is_current_user'] = True
     else:
         context_dict['is_current_user'] = False
@@ -154,38 +154,35 @@ def profile(request,username_slug):
     return render(request, 'cr8/profile.html', context=context_dict)
 
 @login_required
-def claim_achievement(request, achievementName):
+def claim_achievement(request):
 
-    context_dict = {}
+    achievement_id = request.GET['achievement_id']
+    json_dict = {}
 
     try:
         user_profile = UserProfile.objects.get(user__username=request.user)
-        achievement = Achievement.objects.get(achievementName=achievementName)
-
-        context_dict['user_profile'] = user_profile
-        context_dict['achievement'] = achievement
+        achievement = Achievement.objects.get(id=achievement_id)
+        json_dict['achievementName'] = achievement.achievementName
+        json_dict['achievementDescription'] = achievement.achievementDescription
+        json_dict['achievementImage'] = achievement.achievementImage.url
 
     except UserProfile.DoesNotExist:
         user_profile = None
-        context_dict['user_profile'] = None
 
     except Achievement.DoesNotExist:
         achievement = None
-        context_dict['achievement'] = None
 
     if user_profile and achievement:
         # Calls helper function to check achievement criteria is met by the current user
-        achievement_criteria_is_met = check_achievement_criteria(user_profile, achievement.type, achievement.achievementCriteriaExpectedVal)
+        achievement_criteria_is_met = check_achievement_criteria(user_profile, achievement.achievementType, achievement.achievementCriteriaExpectedVal)
     else:
         achievement_criteria_is_met = False
 
     if achievement_criteria_is_met:
-        user_profile.achievements.add(achievement)
-        #AJAX JSON RESPONSE GOES HERE
-        pass
+        #user_profile.achievements.add(achievement)
+        return HttpResponse(json.dumps(json_dict))
     else:
-        #AJAX JSON RESPONSE GOES HERE
-        pass
+        return HttpResponse(json.dumps(json_dict))
 
 def user_login(request):
     if request.method == 'POST':
@@ -220,7 +217,7 @@ def user_logout(request):
 # Checks if the criteria for the achievement of a given type has been met, if so return true else return false
 def check_achievement_criteria(user_profile, type, expected_val):
 
-    if type == "currency" and user_profile.currency == expected_val:
+    if type == "currency" and user_profile.currency >= expected_val:
         return True
 
     # Other achievement types can be added here in the same way
