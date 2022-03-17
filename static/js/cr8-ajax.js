@@ -69,7 +69,7 @@ $(document).ready(function() {
 						}
 				}
 			
-			
+			$('#usercurrency').html(prize.updated_currency);
 			$('#' + prizeIdVar).hide();
 			
 				
