@@ -179,9 +179,11 @@ def claim_achievement(request):
         achievement_criteria_is_met = False
 
     if achievement_criteria_is_met:
-        #user_profile.achievements.add(achievement)
+        json_dict['criteriaIsMet'] = "True"
+        user_profile.achievements.add(achievement)
         return HttpResponse(json.dumps(json_dict))
     else:
+        json_dict['criteriaIsMet'] = "False"
         return HttpResponse(json.dumps(json_dict))
 
 def user_login(request):

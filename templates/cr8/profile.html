@@ -52,11 +52,10 @@
                                     <p> {{ achievement.achievementDescription }}</p>
                                 </div>
                                 {% if is_current_user %}
-                                    <button id="claimbtn"
+                                    <button class="claimbtns"
                                         data-achievementid="{{ achievement.id }}"
-                                        class="btn btn-primary btn-sm"
                                         type="button">
-                                        <h6 id="claimbtntext"> CLAIM </h6>
+                                        <h6 class="claimbtntexts"> CLAIM </h6>
                                     </button>
                                 {% endif %}
                             </div>

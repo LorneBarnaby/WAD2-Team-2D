@@ -16,7 +16,7 @@ $(document).ready(function() {
 			})
 	});
 	
-	$('#claimbtn').click(function() {
+	$('.claimbtns').click(function() {
 		
 		var achievementIdVar;
 		achievementIdVar = $(this).attr('data-achievementid');
@@ -27,10 +27,23 @@ $(document).ready(function() {
 			function(data) {
 				
 				var achievement = JSON.parse(data);
-
-				$('#claimbtntext').html("Claimed: " + achievement.achievementName);
 				
-			})
+				var claimButtons
+				claimButtons = document.getElementsByClassName("claimbtns");
+				
+				for (var i=0; i<claimButtons.length;i++) {
+						if (claimButtons[i].getAttribute('data-achievementid') == achievementIdVar) {
+							if (achievement.criteriaIsMet == "True") {
+								claimButtons[i].innerHTML = "Claimed: " + achievement.achievementName;
+							} else {
+								claimButtons[i].innerHTML = "Criteria not met!";	
+							}
+						}
+				}
+
+				
+				
+			});
 	});
 	
 	
