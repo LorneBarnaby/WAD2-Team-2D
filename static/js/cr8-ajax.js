@@ -15,6 +15,25 @@ $(document).ready(function() {
 				
 			})
 	});
+	
+	$('#claimbtn').click(function() {
+		
+		var achievementIdVar;
+		achievementIdVar = $(this).attr('data-achievementid');
+		
+		
+		$.get('/cr8/claim_achievement/',
+			{'achievement_id':achievementIdVar},
+			function(data) {
+				
+				var achievement = JSON.parse(data);
+
+				$('#claimbtntext').html("Claimed: " + achievement.achievementName);
+				
+			})
+	});
+	
+	
 });
 
 // stub function for selling prizes
