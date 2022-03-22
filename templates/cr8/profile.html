@@ -11,8 +11,8 @@
     {% if user_profile %}
         <div class="profile-container">
             <div class="column profile-info">
-                <img class="profile-image zoom" src="{{ user_profile.profileImage.url }}"
-                     alt="{{ user_profile.user.username }} Profile Image"/>
+                    <img class="profile-image zoom" src="{{ user_profile.profileImage.url }}"
+                        alt="{{ user_profile.user.username }} Profile Image"/>
                 <div class="contentbox">
                     {{ user_profile.user.username }}
                 </div>
@@ -21,9 +21,11 @@
                     <p id="usercurrency"> {{ user_currency }} </p>
                 </div>
 
-                <div class="contentbox">
-                    <a href="{% url 'cr8:edit_profile' %}" class="linkBox">Edit</a>
-                </div>
+                {% if is_current_user %}
+                    <div class="contentbox">
+                        <a href="{% url 'cr8:edit_profile' %}" class="linkBox">Edit</a>
+                    </div>
+                {% endif %}
 
 
             </div>
