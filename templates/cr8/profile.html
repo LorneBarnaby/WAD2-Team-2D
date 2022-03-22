@@ -16,12 +16,15 @@
                 <div class="contentbox">
                     {{ user_profile.user.username }}
                 </div>
+
                 <div class="contentbox">
                     <p id="usercurrency"> {{ user_currency }} </p>
                 </div>
+
                 <div class="contentbox">
-                    edit profile?
+                    <a href="{% url 'cr8:edit_profile' %}" class="linkBox">Edit</a>
                 </div>
+
 
             </div>
 

@@ -1,0 +1,20 @@
+{% extends 'cr8/base.html' %}
+{% load staticfiles %}
+
+
+{% block title_block %}
+    Edit Profile
+{% endblock %}
+
+{% block body_block %}
+
+<form method="post" action="{% url 'cr8:edit_profile' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>
+        <label for="id_profileImage">New Profile Image</label>
+        <input type="file" name="profileImage" accept="image/*" id="id_profileImage">
+    </p>
+    <input type="submit" class="submit-button" name="submit" value="Update"/>
+</form>
+
+{% endblock body_block %}

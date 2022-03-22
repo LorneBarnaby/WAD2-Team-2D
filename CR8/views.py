@@ -239,6 +239,29 @@ def user_logout(request):
     # Take the user back to the homepage.
     return redirect(reverse('cr8:index'))
 
+
+
+def edit_profile(request):
+
+    if request.method == "POST":
+        print('here')
+        if 'profileImage' in request.FILES:
+            print('image', request.FILES)
+            user_profile = UserProfile.objects.get(user__username=request.user.username)
+            user_profile.profileImage = request.FILES['profileImage']
+
+            user_profile.save()
+
+            return redirect(reverse('cr8:profile',args=[user_profile.username_slug]))
+
+        return render(request,'cr8/edit_profile.html')
+
+    else:
+        return render(request,'cr8/edit_profile.html')
+
+
+
+
 # HELPER FUNCTIONS
 
 # Checks if the criteria for the achievement of a given type has been met, if so return true else return false
@@ -250,3 +273,7 @@ def check_achievement_criteria(user_profile, type, expected_val):
     # Other achievement types can be added here in the same way
 
     return False
+
+
+
+

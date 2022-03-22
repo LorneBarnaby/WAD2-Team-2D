@@ -197,6 +197,11 @@ h3 {
     width: 90%;
 }
 
+.linkBox{
+    text-decoration: none;
+    color:white;
+}
+
 .prize_list {
     width: 40%;
     background-color: #2c2f32;

@@ -15,5 +15,7 @@ urlpatterns = [
     path('logout/',views.user_logout, name='logout'),
     path('generate_prizes/', views.generate_prizes, name='generate_prizes'),
     path('claim_achievement/', views.claim_achievement, name='claim_achievement'),
-    path('sell_prize/', views.sell_prize, name='sell_prize')
+    path('sell_prize/', views.sell_prize, name='sell_prize'),
+    path('generate_prizes/', views.generate_prizes, name='generate_prizes'),
+    path('edit_profile/', views.edit_profile, name='edit_profile')
 ]
