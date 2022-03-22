@@ -51,7 +51,7 @@ def aw_generate_user_list():
                 "The Letter D",
                 "The Letter P",
             ],
-            ["have little money", "Impressive Wallet"],
+            ["have little money", "balding elon musk"],
         ],
         [
             "limbsw",
@@ -79,7 +79,7 @@ def aw_generate_user_list():
             "ExamplePassword 12 !",
             999999,
             ["The Letter Q", "The Letter Y", "The Number 'Three' Bus"],
-            ["Moneybags"],
+            ["have little money"],
         ],
         ["bigpoppa", "ExamplePassword 12 !", 1780, ["The Letter H"], []],
         [
