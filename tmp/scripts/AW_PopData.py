@@ -2,7 +2,30 @@ from CR8.rarity import RARITY
 
 
 def aw_generate_achieve_list():
-    pass
+    achievement_vals = [
+        [
+            "have little money",
+            "well done you have little money. less than elton john in a suit. earn 500 fake currency we made up",
+            "1.jpg",
+            "currency",
+            500,
+        ],
+        [
+            "balding elon musk",
+            "ur as rich as balding elon musk. earn 1000 smackeroonies",
+            "2.jpeg",
+            "currency",
+            1000,
+        ],
+        [
+            "bald elon musk",
+            "u r as rich as a bald elon musk. earn 10000 dollarydoos",
+            "3.jpeg",
+            "currency",
+            10000,
+        ],
+    ]
+    return achievement_vals
 
 
 def aw_generate_prize_list():
