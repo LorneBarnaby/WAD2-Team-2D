@@ -6,7 +6,21 @@ from CR8.models import UserProfile
 
 class LeaderboardTests(TestCase):
     def setUp(self):
-        pass
+        self.userList = [
+            "Harry",
+            "Barry",
+            "Carry",
+            "kkk",
+            "charlie",
+            "steve",
+            "iii",
+            "jjj",
+            "ppp",
+            "Sharon",
+            "ttt",
+            "ooo",
+            "cat",
+        ]
 
     def test_response(self):
         response = self.client.get(reverse("cr8:leaderboard"))
@@ -16,22 +30,32 @@ class LeaderboardTests(TestCase):
         response = self.client.get(reverse("cr8:leaderboard"))
         self.assertContains(response, "Try making some friends")
 
-    def test_users_4(self):
-        for i in range(8, 14):
-            user = User(username=str(i))
+    def add_users(self, iterations):
+        sharon = ""
+        for i in range(iterations):
+            user = User(username=self.userList[i])
             user.set_password("Fake Password 19.8")
             user.save()
             profile = UserProfile(user=user)
             profile.save()
+            if self.userList[i] == "Sharon":
+                sharon = profile
+
+        return sharon
+
+    def test_10_users(self):
+        testProfile = self.add_users(10)
+        testProfile.currency = 12
         response = self.client.get(reverse("cr8:leaderboard"))
-        self.assertContains(response, "<h5>4</h5>")
+        self.assertContains(response, "Sharon")
 
     def test_users_cutoff(self):
-        for i in range(10):
-            user = User(username=str(i))
-            user.set_password("Fake Password 19.8")
-            user.save()
-            profile = UserProfile(user=user)
-            profile.save()
+        testProfile = self.add_users(13)
+        testProfile.currency = 0
         response = self.client.get(reverse("cr8:leaderboard"))
         self.assertNotContains(response, "<h5>11</h5>")
+
+    def test_one_user_no_text(self):
+        self.add_users(1)
+        response = self.client.get(reverse("cr8:leaderboard"))
+        self.assertNotContains(response, "Try making some friends")
