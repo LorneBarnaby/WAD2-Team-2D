@@ -62,13 +62,21 @@ def generate_prizes(request):
 
 
 
-def sign_up(request):
+def sign_up(request, edit_mode=False):
     registered = False
     if request.method == 'POST':
-        user_form = UserForm(request.POST)
-        profile_form = UserProfileForm(request.POST)
+
+        # If the user is authenticated, they are editing their profile so return an edit profile form
+        if request.user.is_authenticated:
+            user_form = UserForm(request.POST, instance=request.user)
+            profile_form = UserProfileForm(request.POST, instance=UserProfile.objects.get(user=request.user))
+        # Otherwise this is a new user signing up so return the regular form
+        else:
+            user_form = UserForm(request.POST)
+            profile_form = UserProfileForm(request.POST)
 
         if user_form.is_valid() and profile_form.is_valid():
+
             user = user_form.save()
             user.set_password(user.password)
             user.save()
@@ -78,21 +86,34 @@ def sign_up(request):
 
             if 'profileImage' in request.FILES:
                 profile.profileImage = request.FILES['profileImage']
+            else:
+                profile.profileImage = "profile_images/none.jpg"
 
             profile.save()
 
             registered = True
 
             login(request, user)
-            return redirect(reverse('cr8:index'))
+            if request.user.is_authenticated:
+                return redirect(reverse('cr8:profile',kwargs={'username_slug':UserProfile.objects.get(user=request.user).username_slug}))
+            else:
+                return redirect(reverse('cr8:index'))
+
         else:
             print(user_form.errors, profile_form.errors)
 
     else:
-        user_form = UserForm()
-        profile_form = UserProfileForm()
+        if request.user.is_authenticated:
+            user_form = UserForm(instance=request.user)
+            profile_form = UserProfileForm(instance=UserProfile.objects.get(user=request.user))
+
+        else:
+            user_form = UserForm()
+            profile_form = UserProfileForm()
+
+
     return render(request, 'cr8/sign_up.html',
-                  context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered})
+                  context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered, 'edit_mode':request.user.is_authenticated})
 
 
 def about_us(request):
@@ -238,26 +259,6 @@ def user_logout(request):
     logout(request)
     # Take the user back to the homepage.
     return redirect(reverse('cr8:index'))
-
-
-
-def edit_profile(request):
-
-    if request.method == "POST":
-        print('here')
-        if 'profileImage' in request.FILES:
-            print('image', request.FILES)
-            user_profile = UserProfile.objects.get(user__username=request.user.username)
-            user_profile.profileImage = request.FILES['profileImage']
-
-            user_profile.save()
-
-            return redirect(reverse('cr8:profile',args=[user_profile.username_slug]))
-
-        return render(request,'cr8/edit_profile.html')
-
-    else:
-        return render(request,'cr8/edit_profile.html')
 
 
 
