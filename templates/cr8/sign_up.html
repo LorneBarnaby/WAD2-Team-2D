@@ -5,7 +5,11 @@
     Sign UP
 {% endblock %}
 {% block body_block %}
-    <h1 style="margin-left:5%">Sign Up</h1>
+    {% if edit_mode %}
+        <h1 style="margin-left:5%">Edit Profile</h1>
+    {% else %}
+        <h1 style="margin-left:5%">Sign Up</h1>
+    {% endif %}
     <div class="flash-bar behind"></div>
     <div class="contentbox front" style="margin-top:0;">
         <div class="form-container">
@@ -18,7 +22,11 @@
                     {{ user_form.as_p }}
                     {{ profile_form.as_p }}
                     <!-- Provide a button to click to submit the form. -->
-                    <input type="submit" class="submit-button" name="submit" value="Sign Up"/>
+                    {% if edit_mode %}
+                        <input type="submit" class="submit-button" name="submit" value="Save Changes"/>
+                    {% else %}
+                        <input type="submit" class="submit-button" name="submit" value="Sign Up"/>
+                    {% endif %}
                 </form>
             {% endif %}
         </div>
