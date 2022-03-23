@@ -2,10 +2,11 @@ from enum import Enum
 
 
 class RARITY(Enum):
-    ULTRA_RARE = (("ULTRA_RARE", "ULTRA RARE!"), 1)
-    COMMON = (("COMMON", "Common!"), 70)
-    RARE_ISH = (("RARE_ISH", "Rare-ish"), 19)
-    RARE = (("RARE", "Rare"), 10)
+    COOPER_RARE = (("COOPER_RARE", "COOPER RARE"), 1)
+    ULTRA_RARE = (("ULTRA_RARE", "ULTRA RARE!"), 3)
+    COMMON = (("COMMON", "Common!"), 71)
+    RARE_ISH = (("RARE_ISH", "Rare-ish"), 20)
+    RARE = (("RARE", "Rare"), 11)
 
     @property
     def rarity(self):

@@ -54,8 +54,10 @@ as it'll just duplicate lots of images
 
 
 def copy_no_profile_image():
+    folder = "media/profile_images"
+    os.mkdir(os.path.join(os.getcwd(), folder))
     source = os.path.join(os.getcwd(), "tmp/prof/none.jpg")
-    dest = os.path.join(os.getcwd(), "media/profile_images/none.jpg")
+    dest = os.path.join(os.getcwd(), folder + "/none.jpg")
     copyfile(source, dest)
 
 

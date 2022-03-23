@@ -8,21 +8,21 @@ def aw_generate_achieve_list():
             "well done you have little money. less than elton john in a suit. earn 500 fake currency we made up",
             "1.jpg",
             "currency",
-            500,
+            1000,
         ],
         [
             "balding elon musk",
             "ur as rich as balding elon musk. earn 1000 smackeroonies",
             "2.jpeg",
             "currency",
-            1000,
+            5000,
         ],
         [
             "bald elon musk",
             "u r as rich as a bald elon musk. earn 10000 dollarydoos",
             "3.jpeg",
             "currency",
-            10000,
+            15000,
         ],
     ]
     return achievement_vals
@@ -55,6 +55,8 @@ def aw_generate_prize_list():
         ["blue", 12, str(RARITY.COMMON), "aw_14.png"],
         ["the internet", 967, str(RARITY.ULTRA_RARE), "aw_15.jpeg"],
         ["succulent lamb", 24, str(RARITY.COMMON), "aw_16.jpg"],
+        ["A nice bat", 66, str(RARITY.RARE_ISH), "aw_17.jpg"],
+        ["COOPER!", 1500, str(RARITY.COOPER_RARE), "aw_18.jpg"],
     ]
     return prizeList
 
@@ -78,7 +80,7 @@ def aw_generate_user_list():
             "limbsw",
             "ExamplePassword 12 !",
             1600,
-            ["The Sharon Commit", "The Number 'Three' Bus", "A Plug"],
+            ["The Sharon Commit", "The Number 'Three' Bus", "A Plug", "COOPER!"],
             ["have little money"],
         ],
         ["sharon", "ExamplePassword 12 !", 12, [], []],
