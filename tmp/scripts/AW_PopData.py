@@ -54,7 +54,7 @@ def aw_generate_prize_list():
         ["Mergesort", 50, str(RARITY.RARE), "aw_13.png"],
         ["blue", 12, str(RARITY.COMMON), "aw_14.png"],
         ["the internet", 967, str(RARITY.ULTRA_RARE), "aw_15.jpeg"],
-        ["succulent lamb", 24, str(RARITY.COMMON), "aw_16.jpg"]
+        ["succulent lamb", 24, str(RARITY.COMMON), "aw_16.jpg"],
     ]
     return prizeList
 
