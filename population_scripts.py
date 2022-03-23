@@ -4,6 +4,7 @@ from population_data_and_methods import (
     generate_achievement_lists,
 )
 import os
+from shutil import copyfile
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cr8_project.settings")
 import django
@@ -31,6 +32,9 @@ as it'll just duplicate lots of images
     if image_check == "s" or image_check == "S":
         add_images = False
 
+    if image_check:
+        copy_no_profile_image()
+
     for prize in prize_list:
         prize_django_object = add_prize(prize)
         if add_images:
@@ -47,6 +51,12 @@ as it'll just duplicate lots of images
         add_achievements_to_user(profile_django_object, user)
         if add_images:
             add_image_user(profile_django_object, user)
+
+
+def copy_no_profile_image():
+    source = os.path.join(os.getcwd(), "tmp/prof/none.jpg")
+    dest = os.path.join(os.getcwd(), "media/profile_images/none.jpg")
+    copyfile(source, dest)
 
 
 def add_user(user):
