@@ -37,6 +37,24 @@ def aw_generate_prize_list():
         ["The People's Republic of Govanhill", 364, str(RARITY.RARE), "aw_1.png"],
         ["A Seal", 12, str(RARITY.COMMON), "aw_2.jpg"],
         ["Kingsley", 1001, str(RARITY.ULTRA_RARE), "aw_3.jpg"],
+        ["Tap Water", 3, str(RARITY.COMMON), "aw_4.jpg"],
+        ["Summation", 48, str(RARITY.RARE_ISH), "aw_5.png"],
+        ["Angelos Postecoglu", 197, str(RARITY.RARE), "aw_6.jpg"],
+        ["A jpg", 9, str(RARITY.COMMON), "aw_7.png"],
+        ["THE seal", 999, str(RARITY.ULTRA_RARE), "aw_8.jpg"],
+        [
+            "that minging raw pork thing that german's eat",
+            1,
+            str(RARITY.RARE),
+            "aw_9.jpeg",
+        ],
+        ["FLAMING TESLA", 79, str(RARITY.RARE_ISH), "aw_10.jpg"],
+        ["The JVM", 250, str(RARITY.RARE), "aw_11.jpg"],
+        ["Bogosort", 1, str(RARITY.RARE_ISH), "aw_12.png"],
+        ["Mergesort", 50, str(RARITY.RARE), "aw_13.png"],
+        ["blue", 12, str(RARITY.COMMON), "aw_14.png"],
+        ["the internet", 967, str(RARITY.ULTRA_RARE), "aw_15.jpeg"],
+        ["succulent lamb", 24, str(RARITY.COMMON), "aw_16.jpg"]
     ]
     return prizeList
 
