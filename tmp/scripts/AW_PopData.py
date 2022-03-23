@@ -34,6 +34,9 @@ def aw_generate_prize_list():
         ["A Plug", 5, str(RARITY.COMMON), "2.jpeg"],
         ["The Sharon Commit", 999, str(RARITY.ULTRA_RARE), "3.png"],
         ["The Sky", 842, str(RARITY.RARE), "4.jpg"],
+        ["The People's Republic of Govanhill", 364, str(RARITY.RARE), "aw_1.png"],
+        ["A Seal", 12, str(RARITY.COMMON), "aw_2.jpg"],
+        ["Kingsley", 1001, str(RARITY.ULTRA_RARE), "aw_3.jpg"],
     ]
     return prizeList
 
