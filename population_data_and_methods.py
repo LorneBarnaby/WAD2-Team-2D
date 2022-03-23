@@ -5,6 +5,7 @@ from tmp.scripts.AW_PopData import (
     aw_generate_user_list,
 )
 from tmp.scripts.LB_PopData import lb_generate_prize_list
+from tmp.scripts.SP_PopData import sp_generate_prize_list
 
 
 def create_pop_dict(key_list, value_list):
@@ -29,6 +30,7 @@ def generate_prize_lists():
     prize_vals = []
     prize_vals += aw_generate_prize_list()
     prize_vals += lb_generate_prize_list()
+    prize_vals += sp_generate_prize_list()
     return [create_pop_dict(key_list_prizes, prize_val) for prize_val in prize_vals]
 
 

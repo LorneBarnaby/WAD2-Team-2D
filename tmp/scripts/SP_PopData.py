@@ -1,4 +1,6 @@
-def aw_generate_prize_list():
+from CR8.rarity import RARITY
+
+def sp_generate_prize_list():
     prizeList = [
         ["21 Savegicus and Minute Uzivus Verticality", 21, str(RARITY.RARE_ISH), "SP_1.jpg"],
         ["agony", 15, str(RARITY.COMMON), "SP_2.jpg"],
