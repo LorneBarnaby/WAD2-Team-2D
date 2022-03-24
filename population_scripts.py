@@ -55,10 +55,16 @@ as it'll just duplicate lots of images
 
 def copy_no_profile_image():
     folder = "media/profile_images"
-    os.mkdir(os.path.join(os.getcwd(), folder))
+    try:
+        os.mkdir(os.path.join(os.getcwd(), folder))
+    except:
+        pass
     source = os.path.join(os.getcwd(), "tmp/prof/none.jpg")
     dest = os.path.join(os.getcwd(), folder + "/none.jpg")
-    copyfile(source, dest)
+    try:
+        copyfile(source, dest)
+    except:
+        pass
 
 
 def add_user(user):
