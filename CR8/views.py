@@ -248,9 +248,9 @@ def user_login(request):
             else:
                 return HttpResponse("Your account is disabled.")
         else:
-            return redirect(reverse('cr8:login'))
+            return render(request, 'cr8/login.html', context={"Error":"Error: Invalid username or password!"})
     else:
-        return render(request, 'cr8/login.html')
+        return render(request, 'cr8/login.html', context={"Error":None})
 
 
 @login_required
