@@ -57,6 +57,11 @@ def aw_generate_prize_list():
         ["succulent lamb", 24, str(RARITY.COMMON), "aw_16.jpg"],
         ["A nice bat", 66, str(RARITY.RARE_ISH), "aw_17.jpg"],
         ["COOPER!", 1500, str(RARITY.COOPER_RARE), "aw_18.jpg"],
+        ["Marcella Hazan", 99, str(RARITY.RARE), "aw_19.jpg"],
+        ["Dan Dan Noodles", 76, str(RARITY.RARE_ISH), "aw_20.jpg"],
+        ["Matthew's Supermarket", 64, str(RARITY.COMMON), "aw_21.jpg"],
+        ["a bike", 34, str(RARITY.COMMON), "aw_22.jpg"],
+        ["The Country of Portugal", 128, str(RARITY.RARE), "aw_23.png"],
     ]
     return prizeList
 

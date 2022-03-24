@@ -6,11 +6,10 @@ from tmp.scripts.AW_PopData import (
 )
 from tmp.scripts.LB_PopData import lb_generate_prize_list
 from tmp.scripts.SP_PopData import sp_generate_prize_list
+from tmp.scripts.jk_generateprizes import jk_generateprizes
 
 
 def create_pop_dict(key_list, value_list):
-    # print(value_list)
-    # print("CALLINGCREATE\n\n\n\n\n")
     if len(key_list) != len(value_list):
         print("Error, lists passed to create_pop_dict are not of same length")
         print(f"key list = {key_list}\n value_list = {value_list}")
@@ -31,6 +30,7 @@ def generate_prize_lists():
     prize_vals += aw_generate_prize_list()
     prize_vals += lb_generate_prize_list()
     prize_vals += sp_generate_prize_list()
+    prize_vals += jk_generateprizes()
     return [create_pop_dict(key_list_prizes, prize_val) for prize_val in prize_vals]
 
 
