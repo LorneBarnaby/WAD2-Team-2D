@@ -16,8 +16,11 @@ from random import randint, choices
 
 # Create your views here.
 def index(request):
+
     context_dict = {}
 
+    # Get the user profile instance associated with the current request, if it exists
+    # Store it in the context dictionary if so
     try:
         user_profile = UserProfile.objects.get(user__username=request.user)
         user_prize_list = Prize.objects.filter(userprofile=user_profile).order_by('-prizeValue')[:6]
@@ -68,25 +71,34 @@ def generate_prizes(request):
     return HttpResponse(json.dumps(values))
 
 
-def sign_up(request, edit_mode=False):
+
+
+def sign_up(request):
+    # If the request method is POST, process form data
+    # Otherwise show the registration form if a GET request was made by a new user
+    # or the edit profile form if a GET request was made by an existing user
     registered = False
     if request.method == 'POST':
 
-        # If the user is authenticated, they are editing their profile so return an edit profile form
+        # If the user is authenticated, they are editing their profile so store the edit profile form
         if request.user.is_authenticated:
             user_form = UserForm(request.POST, instance=request.user)
             profile_form = UserProfileForm(request.POST, instance=UserProfile.objects.get(user=request.user))
-        # Otherwise this is a new user signing up so return the regular form
+        # Otherwise this is a new user signing up so store the regular form
         else:
             user_form = UserForm(request.POST)
             profile_form = UserProfileForm(request.POST)
 
+        # If the form submitted is valid
         if user_form.is_valid() and profile_form.is_valid():
 
+            # Save the submitted user data to a user instance
             user = user_form.save()
             user.set_password(user.password)
             user.save()
 
+            # Save the submitted profile data to a user profile instance
+            # This includes any submitted profile image or the default profile image otherwise
             profile = profile_form.save(commit=False)
             profile.user = user
 
@@ -97,37 +109,43 @@ def sign_up(request, edit_mode=False):
 
             profile.save()
 
+            # Once the user's data has been saved to the database, log them in
             registered = True
-
             login(request, user)
+
+            # If the user who made the request was already registered, this means they were editing their profile
+            # so just return them to their profile page
             if request.user.is_authenticated:
-                return redirect(reverse('cr8:profile', kwargs={
-                    'username_slug': UserProfile.objects.get(user=request.user).username_slug}))
+                return redirect(reverse('cr8:profile',kwargs={'username_slug':UserProfile.objects.get(user=request.user).username_slug}))
+            # Otherwise this was an entirely new user so redirect them to the index page
             else:
                 return redirect(reverse('cr8:index'))
 
+        # If any form validation errors were encountered, print them
         else:
             print(user_form.errors, profile_form.errors)
 
+    # In this case a GET request was made
     else:
+        # If the user who made the request is already logged in, return an edit profile form
         if request.user.is_authenticated:
             user_form = UserForm(instance=request.user)
             profile_form = UserProfileForm(instance=UserProfile.objects.get(user=request.user))
-
+        # Otherwise the user is trying to sign up so return the sign up form
         else:
             user_form = UserForm()
             profile_form = UserProfileForm()
 
+
     return render(request, 'cr8/sign_up.html',
-                  context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered,
-                           'edit_mode': request.user.is_authenticated})
+                  context={'user_form': user_form, 'profile_form': profile_form, 'registered': registered, 'edit_mode':request.user.is_authenticated})
 
 
 def about_us(request):
     return render(request, 'cr8/about-us.html')
 
-
 def leaderboard(request):
+
     user_profile_list = UserProfile.objects.order_by('-currency')
 
     context_dict = {}
@@ -147,16 +165,14 @@ def leaderboard(request):
 def contact_us(request):
     return render(request, 'cr8/contact-us.html')
 
-
 def faqs(request):
     return render(request, 'cr8/faqs.html')
 
+def profile(request,username_slug):
 
-def profile(request, username_slug):
     context_dict = {}
 
-    if request.user.is_authenticated and request.user.username == UserProfile.objects.get(
-            username_slug=username_slug).user.username:
+    if request.user.is_authenticated and request.user.username == UserProfile.objects.get(username_slug=username_slug).user.username:
         context_dict['is_current_user'] = True
     else:
         context_dict['is_current_user'] = False
@@ -183,9 +199,9 @@ def profile(request, username_slug):
 
     return render(request, 'cr8/profile.html', context=context_dict)
 
-
 @login_required
 def claim_achievement(request):
+
     achievement_id = request.GET['achievement_id']
     json_dict = {}
 
@@ -204,8 +220,7 @@ def claim_achievement(request):
 
     if user_profile and achievement:
         # Calls helper function to check achievement criteria is met by the current user
-        achievement_criteria_is_met = check_achievement_criteria(user_profile, achievement.achievementType,
-                                                                 achievement.achievementCriteriaExpectedVal)
+        achievement_criteria_is_met = check_achievement_criteria(user_profile, achievement.achievementType, achievement.achievementCriteriaExpectedVal)
     else:
         achievement_criteria_is_met = False
 
@@ -217,9 +232,9 @@ def claim_achievement(request):
         json_dict['criteriaIsMet'] = "False"
         return HttpResponse(json.dumps(json_dict))
 
-
 @login_required
 def sell_prize(request):
+
     prize_id = request.GET['prize_id']
     json_dict = {}
 
@@ -242,7 +257,6 @@ def sell_prize(request):
 
     return HttpResponse(json.dumps(json_dict))
 
-
 def user_login(request):
     if request.method == 'POST':
 
@@ -259,9 +273,9 @@ def user_login(request):
             else:
                 return HttpResponse("Your account is disabled.")
         else:
-            return render(request, 'cr8/login.html', context={"Error": "Error: Invalid username or password!"})
+            return render(request, 'cr8/login.html', context={"Error":"Error: Invalid username or password!"})
     else:
-        return render(request, 'cr8/login.html', context={"Error": None})
+        return render(request, 'cr8/login.html', context={"Error":None})
 
 
 @login_required
@@ -272,13 +286,20 @@ def user_logout(request):
     return redirect(reverse('cr8:index'))
 
 
+
+
 # HELPER FUNCTIONS
 
 # Checks if the criteria for the achievement of a given type has been met, if so return true else return false
 def check_achievement_criteria(user_profile, type, expected_val):
+
     if type == "currency" and user_profile.currency >= expected_val:
         return True
 
     # Other achievement types can be added here in the same way
 
     return False
+
+
+
+

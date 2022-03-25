@@ -59,7 +59,7 @@ def copy_no_profile_image():
         os.mkdir(os.path.join(os.getcwd(), folder))
     except:
         pass
-    source = os.path.join(os.getcwd(), "tmp/prof/none.jpg")
+    source = os.path.join(os.getcwd(), "setup/prof/none.jpg")
     dest = os.path.join(os.getcwd(), folder + "/none.jpg")
     try:
         copyfile(source, dest)
@@ -101,7 +101,7 @@ def add_image_user(profile, user_data):
     filename = user_data["username"] + ".jpg"
 
     try:
-        dir = os.path.join(os.getcwd(), "tmp/prof/" + filename)
+        dir = os.path.join(os.getcwd(), "setup/prof/" + filename)
         profile.profileImage.save(f"{filename}", File(open(dir, "rb")))
     except:
         pass
@@ -109,13 +109,13 @@ def add_image_user(profile, user_data):
 
 def add_image_prize(prize, prize_data):
     filename = prize_data["imagename"]
-    dir = os.path.join(os.getcwd(), "tmp/prize/" + filename)
+    dir = os.path.join(os.getcwd(), "setup/prize/" + filename)
     prize.prizeImage.save(filename, File(open(dir, "rb")))
 
 
 def add_image_achievement(achieve, achieve_data):
     filename = achieve_data["imagename"]
-    dir = os.path.join(os.getcwd(), "tmp/achieve/" + filename)
+    dir = os.path.join(os.getcwd(), "setup/achieve/" + filename)
     achieve.achievementImage.save(filename, File(open(dir, "rb")))
 
 
