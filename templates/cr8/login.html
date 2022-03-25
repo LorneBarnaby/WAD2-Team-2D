@@ -9,6 +9,9 @@
     <div class="flash-bar behind"></div>
     <div class="contentbox front" style="margin-top:0;">
         <div class="form-container">
+            {% if Error %}
+                <p> {{ Error }} </p>
+            {% endif %}
             <form id="login_form" method="post" action="{% url 'cr8:login' %}">
                 {% csrf_token %}
                 Username: <input type="text" name="username" value="" size="50"/>
