@@ -297,6 +297,7 @@ def sell_prize(request):
     return HttpResponse(json.dumps(json_dict))
 
 def user_login(request):
+
     if request.method == 'POST':
 
         username = request.POST.get('username')
@@ -304,13 +305,16 @@ def user_login(request):
 
         user = authenticate(username=username, password=password)
 
+        # If the user authenticated successfully and their account is active, log them in
         if user:
             if user.is_active:
                 login(request, user)
                 print('user logged in: ', user)
                 return redirect(reverse('cr8:index'))
+            # If the user's account is inactive, display an error message informing the user on the login page
             else:
-                return HttpResponse("Your account is disabled.")
+                return render(request, 'cr8/login.html', context={"Error":"Error: This account is disabled."})
+        # If the user authentication was unsuccessful, display an error message informing the user on the login page
         else:
             return render(request, 'cr8/login.html', context={"Error":"Error: Invalid username or password!"})
     else:
@@ -332,11 +336,11 @@ def user_logout(request):
 # Checks if the criteria for the achievement of a given type has been met, if so return true else return false
 def check_achievement_criteria(user_profile, type, expected_val):
 
+    # If the achievement is a currency achievement and the user meets the criteria, return true
     if type == "currency" and user_profile.currency >= expected_val:
         return True
 
-    # Other achievement types can be added here in the same way
-
+    # If the achievement criteria is not met, return False
     return False
 
 
