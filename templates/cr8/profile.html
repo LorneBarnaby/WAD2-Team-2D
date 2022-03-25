@@ -11,8 +11,8 @@
     {% if user_profile %}
         <div class="profile-container">
             <div class="column profile-info">
-                    <img class="profile-image zoom" src="{{ user_profile.profileImage.url }}"
-                        alt="{{ user_profile.user.username }} Profile Image"/>
+                <img class="profile-image zoom" src="{{ user_profile.profileImage.url }}"
+                     alt="{{ user_profile.user.username }} Profile Image"/>
                 <div class="contentbox">
                     {{ user_profile.user.username }}
                 </div>
@@ -45,10 +45,11 @@
                             </div>
                         {% endfor %}
 
-                        {%  else  %}
+                    {% else %}
                         <p>You have no achievements D:</p>
                     {% endif %}
                 </div>
+
                 <div class="profile-achievements contentbox">
                     {% if unclaimed_achievement_list %}
                         <h3>Locked Achievements</h3>
@@ -70,30 +71,27 @@
                         {% endfor %}
                     {% endif %}
                 </div>
+
                 <div class="profile-inventory contentbox">
                     {% if user_prize_list %}
+                        <h3 class="indent">Inventory</h3>
                         {% for prize in user_prize_list %}
                             <div id="{{ prize.id }}">
-                            <li class="prize_list column">
-                                <div>{{ prize.prizeName }}</div>
-                                <div>Value: {{ prize.prizeValue }}</div>
-                                <div>RARITY: {{ prize.prizeRarity }}</div>
-                                <img id="{{ prize.prizeName }}" class="zoom sellable" src="{{ prize.prizeImage.url }}"
-                                     alt="Prize image">
-                            {% if is_current_user %}
-                                <button class="sellbtns"
-                                        data-prizeid="{{ prize.id }}"
-                                        type="button">
-                                    SELL
-                                </button>
-                            </li>
-{#                            {% if is_current_user %}#}
-{#                                <button class="sellbtns"#}
-{#                                        data-prizeid="{{ prize.id }}"#}
-{#                                        type="button">#}
-{#                                    <h6 class="sellbtntexts"> SELL </h6>#}
-{#                                </button>#}
-                            {% endif %}
+                                <li class="prize_list column">
+                                    <div>{{ prize.prizeName }}</div>
+                                    <div>Value: {{ prize.prizeValue }}</div>
+                                    <div>RARITY: {{ prize.prizeRarity }}</div>
+                                    <img id="{{ prize.prizeName }}" class="zoom sellable"
+                                         src="{{ prize.prizeImage.url }}"
+                                         alt="Prize image">
+                                    {% if is_current_user %}
+                                        <button class="sellbtns"
+                                                data-prizeid="{{ prize.id }}"
+                                                type="button">
+                                            SELL
+                                        </button>
+                                        </li>
+                                    {% endif %}
                             </div>
                         {% endfor %}
                     {% else %}
