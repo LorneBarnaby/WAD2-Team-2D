@@ -1,5 +1,8 @@
 from CR8.rarity import RARITY
 
+# all these functions just return a list, in a certain order so that the keys
+# match up with the vals in the population_data_and_methods functions
+
 
 def aw_generate_achieve_list():
     achievement_vals = [

@@ -1,5 +1,7 @@
 from CR8.rarity import RARITY
 
+# for comments see AW_PopData.py
+
 def sp_generate_prize_list():
     prizeList = [
         ["21 Savegicus and Minute Uzivus Verticality", 21, str(RARITY.RARE_ISH), "SP_1.jpg"],

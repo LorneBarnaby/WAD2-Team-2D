@@ -8,6 +8,9 @@ from setup.scripts.LB_PopData import lb_generate_prize_list
 from setup.scripts.SP_PopData import sp_generate_prize_list
 from setup.scripts.jk_generateprizes import jk_generateprizes
 
+# takes two lists, one of keys one of values and just returns a dict with the keys
+# as keys and values as values
+
 
 def create_pop_dict(key_list, value_list):
     if len(key_list) != len(value_list):

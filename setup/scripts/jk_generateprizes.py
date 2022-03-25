@@ -1,12 +1,14 @@
 from CR8.rarity import RARITY
 
+# for comments see AW_PopData.py
+
 def jk_generateprizes():
 
     jk_prize_vals = [
-        ["Glasgow University", 1451, str(RARITY.ULTRA_RARE), "glasgowuni.jpg"],
-        ["Strathclyde University", 1796, str(RARITY.RARE), "strathclydeuni.jpg"],
-        ["Edinburgh University", 1583, str(RARITY.COMMON), "edinburghuni.jpg"],
-        ["St. Andrews University", 1413, str(RARITY.COMMON), "standrewsuni.jpg"],
+        ["Glasgow University", 451, str(RARITY.ULTRA_RARE), "glasgowuni.jpg"],
+        ["Strathclyde University", 796, str(RARITY.RARE), "strathclydeuni.jpg"],
+        ["Edinburgh University", 583, str(RARITY.COMMON), "edinburghuni.jpg"],
+        ["St. Andrews University", 413, str(RARITY.COMMON), "standrewsuni.jpg"],
         ["Glasgow Bin", 1, str(RARITY.COMMON), "glasgowbin.jpg"],
         ["Rango", 18, str(RARITY.RARE), "rango.jpg"],
         ["Tango with Django", 12, str(RARITY.ULTRA_RARE), "tangowithdjango.png"],

@@ -16,9 +16,12 @@ from django.core.files import File
 
 
 def populate():
+    # this is the main backbone of the population script, mostly it just calls
+    # other functions with the generated dicts with the field as a key and the data as a value
     prize_list = generate_prize_lists()
     user_list = generate_user_lists()
     achievement_list = generate_achievement_lists()
+    # we need to copy the no profile image
     copy_no_profile_image()
 
     profile_check = input("""
@@ -44,12 +47,15 @@ n or no to skip this and just add achievements, prizes and a default profile pic
 
     for prize in prize_list:
         prize_django_object = add_prize(prize)
+        # passing the prize django object to the add image function
         add_image_prize(prize_django_object, prize)
 
     for achieve in achievement_list:
         achieve_django_object = add_achievement(achieve)
         add_image_achievement(achieve_django_object, achieve)
 
+    # adds profiles in a simlar way to the other functions if the user has declared
+    # that they want to
     if add_profiles:
         for user in user_list:
             profile_django_object = add_user(user)
@@ -59,6 +65,9 @@ n or no to skip this and just add achievements, prizes and a default profile pic
 
 
 def copy_no_profile_image():
+    # copying no profile image, if the file or folder already exists
+    # python gets arsey, so we just encase these in a try except as
+    # if the file/folder exists there's no need to make/copy it
     folder = "media/profile_images"
     try:
         os.mkdir(os.path.join(os.getcwd(), folder))
@@ -73,10 +82,13 @@ def copy_no_profile_image():
 
 
 def add_user(user):
+    #using the builtin django functionality to create a user with
+    # the username given by the dict
     username = user["username"]
     u = User.objects.get_or_create(username=username)[0]
     u.set_password(user["password"])
     u.save()
+    # we now pass that user to userProfile set currency and save it
     profile = UserProfile.objects.get_or_create(user=u)[0]
     profile.currency = user["currency"]
     profile.save()
@@ -84,6 +96,7 @@ def add_user(user):
 
 
 def add_prize(prize):
+    # similar to above but with prizes
     prize_name = prize["name"]
     p = Prize.objects.get_or_create(prizeName=prize_name)[0]
     p.prizeValue = prize["value"]
@@ -103,6 +116,8 @@ def add_achievement(achieve):
 
 
 def add_image_user(profile, user_data):
+    # adds profile image to the dummy user data - if they have one - if not
+    # we just skip
     filename = user_data["username"] + ".jpg"
 
     try:
@@ -113,18 +128,21 @@ def add_image_user(profile, user_data):
 
 
 def add_image_prize(prize, prize_data):
+    # fairly simple just assosciates an image with a prize in the db
     filename = prize_data["imagename"]
     dir = os.path.join(os.getcwd(), "setup/prize/" + filename)
     prize.prizeImage.save(filename, File(open(dir, "rb")))
 
 
 def add_image_achievement(achieve, achieve_data):
+    # as above
     filename = achieve_data["imagename"]
     dir = os.path.join(os.getcwd(), "setup/achieve/" + filename)
     achieve.achievementImage.save(filename, File(open(dir, "rb")))
 
 
 def add_prizes_to_user(user, user_dict):
+    # assosciates prizes with user for the dummy data
     prizeList = user_dict["prizeList"]
 
     for prize in prizeList:
@@ -135,6 +153,7 @@ def add_prizes_to_user(user, user_dict):
 
 
 def add_achievements_to_user(user, user_dict):
+    # adds achievements to user
     achieve_list = user_dict["achieveList"]
 
     for achieve in achieve_list:
