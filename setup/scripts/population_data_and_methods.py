@@ -1,4 +1,3 @@
-# from CR8.rarity import RARITY
 from setup.scripts.AW_PopData import (
     aw_generate_achieve_list,
     aw_generate_prize_list,
