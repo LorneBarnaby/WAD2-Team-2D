@@ -46,7 +46,7 @@
                         {% endfor %}
 
                         {%  else  %}
-                        <p>You have no achievements :(</p>
+                        <p>You have no achievements D:</p>
                     {% endif %}
                 </div>
                 <div class="profile-achievements contentbox">
@@ -74,17 +74,25 @@
                     {% if user_prize_list %}
                         {% for prize in user_prize_list %}
                             <div id="{{ prize.id }}">
-                            <li class="prize_list">
+                            <li class="prize_list column">
                                 <div>{{ prize.prizeName }}</div>
                                 <div>Value: {{ prize.prizeValue }}</div>
+                                <div>RARITY: {{ prize.prizeRarity }}</div>
                                 <img id="{{ prize.prizeName }}" class="zoom sellable" src="{{ prize.prizeImage.url }}"
-                                     alt="Prize image"></li>
+                                     alt="Prize image">
                             {% if is_current_user %}
                                 <button class="sellbtns"
                                         data-prizeid="{{ prize.id }}"
                                         type="button">
-                                    <h6 class="sellbtntexts"> SELL </h6>
+                                    SELL
                                 </button>
+                            </li>
+{#                            {% if is_current_user %}#}
+{#                                <button class="sellbtns"#}
+{#                                        data-prizeid="{{ prize.id }}"#}
+{#                                        type="button">#}
+{#                                    <h6 class="sellbtntexts"> SELL </h6>#}
+{#                                </button>#}
                             {% endif %}
                             </div>
                         {% endfor %}
