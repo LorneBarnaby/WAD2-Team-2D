@@ -1,5 +1,5 @@
 ## Installation
-To install the dependencies simply run ```pip install -r``` requirements.txt in python shell
+To install the dependencies simply run ```pip install -r requirements.txt``` in python shell
 
 ## Setup Guide
 
