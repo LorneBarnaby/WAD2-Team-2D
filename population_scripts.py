@@ -1,4 +1,4 @@
-from population_data_and_methods import (
+from setup.scripts.population_data_and_methods import (
     generate_user_lists,
     generate_prize_lists,
     generate_achievement_lists,
@@ -19,37 +19,42 @@ def populate():
     prize_list = generate_prize_lists()
     user_list = generate_user_lists()
     achievement_list = generate_achievement_lists()
+    copy_no_profile_image()
 
-    image_check = input(
-        """
-Enter s to skip adding of images, enter anything else to not skip
-might be wise to skip if you've done it before
-as it'll just duplicate lots of images
-> """
-    )
+    profile_check = input("""
+Enter yes or y to add dummy user data for testing, otherwise enter
+n or no to skip this and just add achievements, prizes and a default profile picture
+> """).casefold()
 
-    add_images = True
-    if image_check == "s" or image_check == "S":
-        add_images = False
+    acceptable_responses = {"y", "yes", "n", "no"}
 
-    if image_check:
-        copy_no_profile_image()
+    while profile_check not in acceptable_responses:
+        profile_check = input("""
+Error I don't recognise that response
+Enter yes or y to add dummy user data for testing, otherwise enter
+n or no to skip this and just add achievements, prizes and a default profile picture
+> """).casefold()
+
+    if profile_check in {"y", "yes"}:
+        print("true")
+        add_profiles = True
+    else:
+        print("false")
+        add_profiles = False
 
     for prize in prize_list:
         prize_django_object = add_prize(prize)
-        if add_images:
-            add_image_prize(prize_django_object, prize)
+        add_image_prize(prize_django_object, prize)
 
     for achieve in achievement_list:
         achieve_django_object = add_achievement(achieve)
-        if add_images:
-            add_image_achievement(achieve_django_object, achieve)
+        add_image_achievement(achieve_django_object, achieve)
 
-    for user in user_list:
-        profile_django_object = add_user(user)
-        add_prizes_to_user(profile_django_object, user)
-        add_achievements_to_user(profile_django_object, user)
-        if add_images:
+    if add_profiles:
+        for user in user_list:
+            profile_django_object = add_user(user)
+            add_prizes_to_user(profile_django_object, user)
+            add_achievements_to_user(profile_django_object, user)
             add_image_user(profile_django_object, user)
 
 
