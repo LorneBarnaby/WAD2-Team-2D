@@ -20,25 +20,25 @@
         <div class="leaderboard-container">
             {% if user_profile_list %}
 
-              {% for user_profile in user_profile_list|slice:":10"  %}
-                  <div class="leaderboard-position">
-                      <h5>{{ forloop.counter }}</h5>
-                      <div>
-                          <a href="{% url 'cr8:profile' user_profile.username_slug %}">
-                              <img class = "zoom" src="{{ user_profile.profileImage.url }}"
-                                  alt="{{ user_profile.user.username }} Profile Image"/>
-                          </a>
-                      </div>
-                      <h3 class="blue">
-                          <a href="{% url 'cr8:profile' user_profile.username_slug %}">{{ user_profile.user.username }}</a>
-                      </h3>
-                      <h3>Currency: {{ user_profile.currency }}</h3>
-                  </div>
-              {% endfor %}
+                {% for user_profile in user_profile_list|slice:":10" %}
+                    <div class="leaderboard-position">
+                        <h5>{{ forloop.counter }}</h5>
+                        <div>
+                            <a href="{% url 'cr8:profile' user_profile.username_slug %}">
+                                <img class="zoom" src="{{ user_profile.profileImage.url }}"
+                                     alt="{{ user_profile.user.username }} Profile Image"/>
+                            </a>
+                        </div>
+                        <h3 class="blue">
+                            <a href="{% url 'cr8:profile' user_profile.username_slug %}">{{ user_profile.user.username }}</a>
+                        </h3>
+                        <h3>Currency: {{ user_profile.currency }}</h3>
+                    </div>
+                {% endfor %}
 
             {% else %}
-              <h3>No users!</h3></br>
-              Try making some friends!
+                <h3>No users!</h3></br>
+                Try making some friends!
             {% endif %}
         </div>
     </div>

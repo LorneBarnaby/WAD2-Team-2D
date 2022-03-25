@@ -33,11 +33,10 @@
             <div class="profile-stock column">
                 <div class="profile-achievements contentbox">
                     {% if user_achievement_list %}
+                        <h3>Your Achievements</h3>
+                        </br>
                         {% for achievement in user_achievement_list %}
                             <div class="achievement-container wrapper">
-                                {#                            this is busted. how to get achievement images?#}
-                                {#                                temporary image used instead#}
-                                {#                                i think the view needs to change#}
                                 <img class="zoom" src="{{ achievement.achievementImage.url }}" alt="achievement image">
                                 <div>
                                     <p>{{ achievement.achievementName }}</p>
@@ -45,10 +44,14 @@
                                 </div>
                             </div>
                         {% endfor %}
+
+                        {%  else  %}
+                        <p>You have no achievements :(</p>
                     {% endif %}
                 </div>
                 <div class="profile-achievements contentbox">
                     {% if unclaimed_achievement_list %}
+                        <h3>Locked Achievements</h3>
                         {% for achievement in unclaimed_achievement_list %}
                             <div class="achievement-container wrapper">
                                 <img class="zoom" src="{{ achievement.achievementImage.url }}" alt="achievement image">
@@ -58,8 +61,8 @@
                                 </div>
                                 {% if is_current_user %}
                                     <button class="claimbtns"
-                                        data-achievementid="{{ achievement.id }}"
-                                        type="button">
+                                            data-achievementid="{{ achievement.id }}"
+                                            type="button">
                                         <h6 class="claimbtntexts"> CLAIM </h6>
                                     </button>
                                 {% endif %}
@@ -80,7 +83,7 @@
                                 <button class="sellbtns"
                                         data-prizeid="{{ prize.id }}"
                                         type="button">
-                                        <h6 class="sellbtntexts"> SELL </h6>
+                                    <h6 class="sellbtntexts"> SELL </h6>
                                 </button>
                             {% endif %}
                             </div>
