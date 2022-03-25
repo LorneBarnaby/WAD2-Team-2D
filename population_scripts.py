@@ -39,10 +39,8 @@ n or no to skip this and just add achievements, prizes and a default profile pic
 > """).casefold()
 
     if profile_check in {"y", "yes"}:
-        print("true")
         add_profiles = True
     else:
-        print("false")
         add_profiles = False
 
     for prize in prize_list:
