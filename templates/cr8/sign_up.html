@@ -5,11 +5,14 @@
     Sign UP
 {% endblock %}
 {% block body_block %}
+<!--if it is in edit mode there is a different view that shows to the user   -->
     {% if edit_mode %}
+
         <h1 style="margin-left:5%">Edit Profile</h1>
     {% else %}
         <h1 style="margin-left:5%">Sign Up</h1>
     {% endif %}
+<!-- adding css to the sign up page making it more aesthetic -->
     <div class="flash-bar behind"></div>
     <div class="contentbox front" style="margin-top:0;">
         <div class="form-container">

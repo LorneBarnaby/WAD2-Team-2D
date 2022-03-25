@@ -180,6 +180,7 @@ def profile(request,username_slug):
     try:
         user_profile = UserProfile.objects.get(username_slug=username_slug)
         user_prize_list = Prize.objects.filter(userprofile=user_profile)
+        user_prize_list = user_prize_list.order_by('-prizeValue')
         user_achievement_list = Achievement.objects.filter(userprofile=user_profile)
         unclaimed_achievement_list = Achievement.objects.exclude(userprofile=user_profile)
         user_currency = user_profile.currency
