@@ -433,7 +433,13 @@ h3 {
 
 }
 
+.rarityTable{
+    border: 1px solid white;
+      padding:0em 2em;
+    border-collapse: collapse;
+}
 
-
-
+table, td, th {
+    border: 1px solid white;
+}
 

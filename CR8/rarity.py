@@ -30,3 +30,7 @@ class RARITY(Enum):
             return RARITY[rarity[0].name]
         else:
             return None
+
+    @classmethod
+    def get_int_value(cls, name):
+        return RARITY[name].value[1]

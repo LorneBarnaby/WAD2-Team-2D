@@ -5,10 +5,14 @@
 {% endblock %}
 {% block body_block %}
     </br>
+<!--Using the login page from TWD we have modified it and enhanced the style of the program by adding css making it more pleasant to look  -->
     <h1 style="margin-left:5%">Login</h1>
     <div class="flash-bar behind"></div>
     <div class="contentbox front" style="margin-top:0;">
         <div class="form-container">
+            {% if Error %}
+                <p> {{ Error }} </p>
+            {% endif %}
             <form id="login_form" method="post" action="{% url 'cr8:login' %}">
                 {% csrf_token %}
                 Username: <input type="text" name="username" value="" size="50"/>
