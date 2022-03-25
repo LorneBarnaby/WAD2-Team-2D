@@ -1,12 +1,12 @@
 # from CR8.rarity import RARITY
-from tmp.scripts.AW_PopData import (
+from setup.scripts.AW_PopData import (
     aw_generate_achieve_list,
     aw_generate_prize_list,
     aw_generate_user_list,
 )
-from tmp.scripts.LB_PopData import lb_generate_prize_list
-from tmp.scripts.SP_PopData import sp_generate_prize_list
-from tmp.scripts.jk_generateprizes import jk_generateprizes
+from setup.scripts.LB_PopData import lb_generate_prize_list
+from setup.scripts.SP_PopData import sp_generate_prize_list
+from setup.scripts.jk_generateprizes import jk_generateprizes
 
 
 def create_pop_dict(key_list, value_list):
