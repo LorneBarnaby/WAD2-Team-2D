@@ -216,59 +216,84 @@ def profile(request,username_slug):
 @login_required
 def claim_achievement(request):
 
+    # Retrieve the achievement id associated with the request
     achievement_id = request.GET['achievement_id']
     json_dict = {}
 
+    # Retrieve the user profile instance associated with the user who made the request
+    # Also retrieve from the database the achievement with the achievement id from the request
     try:
         user_profile = UserProfile.objects.get(user__username=request.user)
         achievement = Achievement.objects.get(id=achievement_id)
+
+        # Store the achievement's name, description and image in a dictionary
+        # This will be converted to a JSON format
+
         json_dict['achievementName'] = achievement.achievementName
         json_dict['achievementDescription'] = achievement.achievementDescription
         json_dict['achievementImage'] = achievement.achievementImage.url
 
+    # If the user profile instance could not be found in the database, handle this by setting the user_profile to None
+    # Do the same if an achievement instance could not be found
     except UserProfile.DoesNotExist:
         user_profile = None
 
     except Achievement.DoesNotExist:
         achievement = None
 
+    # If both the user profile instance and achievement were found in the database
     if user_profile and achievement:
         # Calls helper function to check achievement criteria is met by the current user
         achievement_criteria_is_met = check_achievement_criteria(user_profile, achievement.achievementType, achievement.achievementCriteriaExpectedVal)
+    # If neither instance could be found in the database, the criteria for the achievement cannot possibly be met
     else:
         achievement_criteria_is_met = False
 
+    # Whether the achievement criteria is met or not, add this to the dictionary to be converted to a JSON object
     if achievement_criteria_is_met:
         json_dict['criteriaIsMet'] = "True"
+        # Add the achievement to the set of achievements associated with the user who made the request
         user_profile.achievements.add(achievement)
-        return HttpResponse(json.dumps(json_dict))
     else:
         json_dict['criteriaIsMet'] = "False"
-        return HttpResponse(json.dumps(json_dict))
+    # Convert the stored dictionary to a JSON object and return it in the response
+    return HttpResponse(json.dumps(json_dict))
 
 @login_required
 def sell_prize(request):
 
+    # Retrieve the prize id associated with the request
     prize_id = request.GET['prize_id']
     json_dict = {}
 
+    # Retrieve the user profile instance associated with the user who made the request
+    # Also retrieve from the database the prize with the prize id from the request
     try:
         user_profile = UserProfile.objects.get(user__username=request.user)
         prize = Prize.objects.get(id=prize_id)
+        # Store the prize's value in a dictionary
+        # This will be converted to a JSON format
         json_dict['prizeValue'] = prize.prizeValue
 
+    # If the user profile instance could not be found in the database, handle this by setting the user_profile to None
+    # Do the same if a prize instance could not be found
     except UserProfile.DoesNotExist:
         user_profile = None
 
     except Prize.DoesNotExist:
         prize = None
 
+    # If both the user profile instance and prize were found in the database
     if user_profile and prize:
+        # Remove the prize from the list of prizes associated with the user and update their stored currency
+        # Save this change to the database
         user_profile.prizes.remove(prize)
         user_profile.currency += prize.prizeValue
         user_profile.save()
+        # Store the updated currency in the dictionary which will be converted to a JSON object
         json_dict['updated_currency'] = user_profile.currency
 
+    # Convert the dictionary to a JSON object and return it in the response
     return HttpResponse(json.dumps(json_dict))
 
 def user_login(request):
