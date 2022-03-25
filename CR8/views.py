@@ -7,8 +7,6 @@ import json
 
 from CR8.models import UserProfile, Prize, Achievement
 from .forms import UserForm, UserProfileForm
-from django.contrib.auth import authenticate, login
-from django.urls import reverse
 
 from CR8.rarity import RARITY
 from random import randint, choices
@@ -29,6 +27,8 @@ def index(request):
         context_dict['user_prize_list'] = user_prize_list
         context_dict['user_currency'] = user_currency
 
+    # If a user profile instance could not be found, set the associated value in the context dictionary to None
+    # This means the index page will still render correctly, just without user information
     except UserProfile.DoesNotExist:
         context_dict['user_profile'] = None
         context_dict['user_prize_list'] = None
