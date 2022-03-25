@@ -146,12 +146,16 @@ def about_us(request):
 
 def leaderboard(request):
 
+    # Get a list of user profiles in the database sorted in descending order of currency
+    # Store this in the context dictionary
     user_profile_list = UserProfile.objects.order_by('-currency')
 
     context_dict = {}
 
     context_dict["user_profile_list"] = user_profile_list
 
+    # If the user who made the request is logged in, determine their position in the leaderboard
+    # Store this in the context dictionary
     curr_position_in_leaderboard = None
     if request.user.is_authenticated:
         for leaderboard_index, user_profile in enumerate(user_profile_list):
@@ -172,11 +176,18 @@ def profile(request,username_slug):
 
     context_dict = {}
 
+    # If the user who made the request is logged in and the profile page they're visiting is their own
+    # then store this in the context dictionary with a True value
+    # Otherwise it is someone else's profile so store a False value
     if request.user.is_authenticated and request.user.username == UserProfile.objects.get(username_slug=username_slug).user.username:
         context_dict['is_current_user'] = True
     else:
         context_dict['is_current_user'] = False
 
+    # Retrieve the user profile instance in the database associated with the user who made the current request
+    # Get their stored currency, associated prizes and achievements as well
+    # Also retrieve a separate list of achievements they have not unlocked
+    # Store all this retrieved data in the context dictionary
     try:
         user_profile = UserProfile.objects.get(username_slug=username_slug)
         user_prize_list = Prize.objects.filter(userprofile=user_profile)
@@ -191,6 +202,8 @@ def profile(request,username_slug):
         context_dict['user_currency'] = user_currency
         context_dict['unclaimed_achievement_list'] = unclaimed_achievement_list
 
+    # If the user profile instance could not be found in the database
+    # set all stored values in the context dictionary to None so the page still renders without errors
     except UserProfile.DoesNotExist:
         context_dict['user_profile'] = None
         context_dict['user_prize_list'] = None
